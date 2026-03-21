@@ -199,3 +199,86 @@ class Portfolio:
             equity += market_value
 
         return equity
+
+    def calculate_kelly_fraction(self, fractional: float = 0.5) -> float:
+        """Calculate Kelly Criterion position sizing fraction.
+
+        Kelly Criterion: f* = (bp - q) / b
+        Where:
+          b = ratio of average win to average loss
+          p = probability of winning (win rate)
+          q = probability of losing (1 - p)
+
+        Args:
+            fractional: Fraction of Kelly to use (default 0.5 = half-Kelly)
+                       Use < 1.0 for safety (0.25 conservative, 0.5 moderate, 1.0 aggressive)
+
+        Returns:
+            Kelly fraction to use for position sizing (0.0 to 1.0)
+            Returns 0.5 (50% fixed sizing) if insufficient trade history
+        """
+        if len(self.trade_history) < 10:
+            # Insufficient data - use conservative sizing
+            return 0.5  # Default to 50 shares per position
+
+        # Calculate win rate and P&L statistics
+        import numpy as np
+
+        pnls = [trade["pnl"] for trade in self.trade_history]
+        wins = [p for p in pnls if p > 0]
+        losses = [abs(p) for p in pnls if p < 0]
+
+        if len(wins) == 0 or len(losses) == 0:
+            # All wins or all losses - not enough data
+            return 0.5
+
+        win_rate = len(wins) / len(self.trade_history)
+        avg_win = np.mean(wins)
+        avg_loss = np.mean(losses)
+
+        if avg_loss == 0:
+            return 0.5
+
+        # Kelly formula: f* = (bp - q) / b
+        b = avg_win / avg_loss  # Odds ratio
+        p = win_rate  # Probability of win
+        q = 1 - win_rate  # Probability of loss
+
+        kelly_full = (b * p - q) / b if b > 0 else 0
+
+        # Clamp to reasonable bounds and apply fractional Kelly
+        kelly_full = max(0, min(kelly_full, 1.0))  # 0 to 100%
+        kelly_fractional = kelly_full * fractional
+
+        return kelly_fractional
+
+    def calculate_position_size(
+        self,
+        price: float,
+        kelly_fraction: float = 0.5,
+        max_position_pct: float = 0.25
+    ) -> int:
+        """Calculate position size using Kelly Criterion.
+
+        Args:
+            price: Current stock price
+            kelly_fraction: Kelly sizing fraction (0.0 to 1.0)
+            max_position_pct: Maximum position as % of portfolio (default 25%)
+
+        Returns:
+            Number of shares to buy
+        """
+        # Maximum allocation per position based on portfolio %
+        max_allocation = self.initial_cash * max_position_pct
+
+        # Kelly-sized allocation: conservative sizing to manage risk
+        # Uses small multiplier (0.05 = 5%) per position to maintain capital for multiple trades
+        kelly_allocation = self.initial_cash * kelly_fraction * 0.05
+
+        # Use the smaller of Kelly or max position
+        allocation = min(kelly_allocation, max_allocation)
+
+        # Calculate shares (round down for safety)
+        shares = int(allocation / price)
+
+        return max(1, shares)  # At least 1 share

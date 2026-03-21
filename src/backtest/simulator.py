@@ -80,9 +80,17 @@ class Backtester:
                         position_exists = any(pos.ticker == ticker for pos in self.portfolio.positions)
                         if not position_exists:
                             try:
+                                # Calculate Kelly Criterion position sizing
+                                kelly_fraction = self.portfolio.calculate_kelly_fraction(fractional=0.5)
+                                quantity = self.portfolio.calculate_position_size(
+                                    price=price,
+                                    kelly_fraction=kelly_fraction,
+                                    max_position_pct=0.25
+                                )
+
                                 self.portfolio.open_position(
                                     ticker=ticker,
-                                    quantity=100,  # Standard position size
+                                    quantity=quantity,
                                     price=price,
                                     entry_date=signal_date
                                 )
