@@ -39,10 +39,12 @@ from src.plotting.visualizer import plot_equity_curve, print_signal_table
 # CONFIGURATION SECTION (Editable)
 # ============================================================================
 
-SAAS_STOCKS = ["CRM", "NOW", "WDAY", "SNOW", "MDB", "DDOG", "ZS", "CRWD", "NET", "HUBS"]
+# Actual current holdings of IGV (iShares Global Tech ETF) - Updated March 2026
+SAAS_STOCKS = ["MSFT", "AAPL", "NVDA", "META", "GOOGL", "TSLA", "AVGO", "CRM", "ADBE", "CSCO"]
 SAAS_ETF = "IGV"
 
-SEMI_STOCKS = ["NVDA", "AMD", "INTC", "AVGO", "QCOM", "MRVL", "AMAT", "LRCX", "KLAC", "MU"]
+# Actual current holdings of SMH (iShares Semiconductor ETF) - Updated March 2026
+SEMI_STOCKS = ["NVDA", "TSM", "AVGO", "ASML", "INTC", "QCOM", "AMD", "AMAT", "LRCX", "KLAC"]
 SEMI_ETF = "SMH"
 
 INITIAL_CASH = 10000

@@ -18,8 +18,11 @@ Brief explanation of strategy:
 
 ## Sectors Covered
 
-- **SaaS**: CRM, NOW, WDAY, SNOW, MDB, DDOG, ZS, CRWD, NET, HUBS (vs IGV)
-- **Semiconductors**: NVDA, AMD, INTC, AVGO, QCOM, MRVL, AMAT, LRCX, KLAC, MU (vs SMH)
+**Technology** (vs IGV - iShares Global Tech ETF):
+- MSFT, AAPL, NVDA, META, GOOGL, TSLA, AVGO, CRM, ADBE, CSCO
+
+**Semiconductors** (vs SMH - iShares Semiconductor ETF):
+- NVDA, TSM, AVGO, ASML, INTC, QCOM, AMD, AMAT, LRCX, KLAC
 
 ## Installation
 
