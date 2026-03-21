@@ -184,3 +184,69 @@ def test_compute_s_score():
     # Test case 4: NaN sigma_eq should return NaN
     s_nan_sigma = compute_s_score(1.0, 0.0, np.nan)
     assert np.isnan(s_nan_sigma), "s-score should be NaN when sigma_eq=NaN"
+
+
+def test_generate_daily_signals():
+    """Test daily signal generation pipeline.
+
+    Creates 100-day synthetic stock_data and etf_data with required columns.
+
+    Verifies:
+    - Output is a dict with required keys
+    - Signal is one of the valid trading signals
+    - S-Score, Half-Life, and Volume-Ratio are numeric
+    """
+    from src.signals.engine import generate_daily_signals
+
+    np.random.seed(42)
+    n = 100
+    dates = pd.date_range("2025-01-01", periods=n)
+
+    # Create synthetic stock data
+    stock_price = 100.0 + np.cumsum(np.random.randn(n) * 0.5)
+    stock_volume = np.random.randint(1000000, 5000000, n)
+    stock_data = pd.DataFrame(
+        {
+            "Adj Close": stock_price,
+            "Volume": stock_volume,
+        },
+        index=dates,
+    )
+
+    # Create synthetic ETF data
+    etf_price = 50.0 + np.cumsum(np.random.randn(n) * 0.3)
+    etf_volume = np.random.randint(2000000, 8000000, n)
+    etf_data = pd.DataFrame(
+        {
+            "Adj Close": etf_price,
+            "Volume": etf_volume,
+        },
+        index=dates,
+    )
+
+    # Call generate_daily_signals
+    result = generate_daily_signals("TEST", stock_data, etf_data)
+
+    # Verify output is a dict
+    assert isinstance(result, dict), "Output should be a dict"
+
+    # Verify required keys are present
+    required_keys = {"Ticker", "S-Score", "Signal", "Half-Life", "Volume-Ratio"}
+    assert required_keys.issubset(set(result.keys())), f"Missing required keys. Got: {result.keys()}"
+
+    # Verify Ticker value
+    assert result["Ticker"] == "TEST", f"Ticker should be 'TEST', got {result['Ticker']}"
+
+    # Verify Signal is one of the valid values
+    valid_signals = {"BUY", "SHORT", "CLOSE_LONG", "CLOSE_SHORT", "HOLD", "REJECTED"}
+    assert result["Signal"] in valid_signals, f"Signal {result['Signal']} not in {valid_signals}"
+
+    # Verify numeric fields (or NaN for rejected stocks)
+    if result["Signal"] != "REJECTED":
+        assert isinstance(result["S-Score"], (int, float)) and not np.isnan(
+            result["S-Score"]
+        ), f"S-Score should be numeric, got {result['S-Score']}"
+        assert isinstance(result["Half-Life"], (int, float)) and not np.isnan(
+            result["Half-Life"]
+        ), f"Half-Life should be numeric, got {result['Half-Life']}"
+        assert isinstance(result["Volume-Ratio"], (int, float)), f"Volume-Ratio should be numeric, got {result['Volume-Ratio']}"
