@@ -129,7 +129,7 @@ def main():
                     stock_data=stock_data,
                     etf_data=etf_data,
                     window=60,
-                    max_half_life=30,
+                    max_half_life=20,  # OPTIMIZED: Tight half-life filter
                 )
 
                 # Add sector and date information
@@ -159,7 +159,7 @@ def main():
                     stock_data=stock_data,
                     etf_data=etf_data,
                     window=60,
-                    max_half_life=30,
+                    max_half_life=20,  # OPTIMIZED: Tight half-life filter
                 )
 
                 # Add sector and date information
@@ -232,6 +232,7 @@ def main():
                             ticker=stock_ticker,
                             stock_data=stock_data,
                             etf_data=etf_data,
+                            max_half_life=20,  # OPTIMIZED: Tight filter improves Sharpe
                         )
                         signal_dict["Sector"] = "Technology"
                         signal_dict["Date"] = signal_date
@@ -253,6 +254,7 @@ def main():
                             ticker=stock_ticker,
                             stock_data=stock_data,
                             etf_data=etf_data,
+                            max_half_life=20,  # OPTIMIZED: Tight filter improves Sharpe
                         )
                         signal_dict["Sector"] = "Semiconductor"
                         signal_dict["Date"] = signal_date
