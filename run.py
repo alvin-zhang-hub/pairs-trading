@@ -202,68 +202,94 @@ def main():
         )
         backtest_data = all_data[mask]
 
-        # Reindex signals_df to have Date as column (not index)
-        # Create a full signals DataFrame for backtest period
+        # Generate rolling signals for each date in backtest period
+        # Use every 5th trading day to reduce computation while keeping signal density
         backtest_signals_list = []
+        all_dates = sorted(backtest_data.index.get_level_values(0).unique())
+        sample_dates = all_dates[::5]  # Sample every 5th day
 
-        for stock_ticker in IGV_STOCKS:
-            try:
-                stock_data = backtest_data.loc[backtest_data.index.get_level_values(1) == stock_ticker]
-                stock_data = stock_data.reset_index(level=1, drop=True)
+        print(f"  Generating signals for {len(sample_dates)} dates (sampling every 5th trading day)...")
 
-                etf_data = backtest_data.loc[backtest_data.index.get_level_values(1) == IGV_ETF]
-                etf_data = etf_data.reset_index(level=1, drop=True)
+        for sample_idx, signal_date in enumerate(sample_dates):
+            if sample_idx % max(1, len(sample_dates) // 5) == 0:
+                print(f"    Progress: {sample_idx}/{len(sample_dates)} dates processed")
 
-                if len(stock_data) > 60:
-                    signal_dict = generate_daily_signals(
-                        ticker=stock_ticker,
-                        stock_data=stock_data,
-                        etf_data=etf_data,
-                    )
+            # Get data up to and including this date
+            date_mask = backtest_data.index.get_level_values(0) <= signal_date
+            data_to_date = backtest_data[date_mask]
 
-                    signal_dict["Sector"] = "Technology"
-                    signal_dict["Date"] = latest_date
-                    backtest_signals_list.append(signal_dict)
-            except Exception:
-                continue
+            # Process IGV stocks
+            for stock_ticker in IGV_STOCKS:
+                try:
+                    stock_data = data_to_date.loc[data_to_date.index.get_level_values(1) == stock_ticker]
+                    stock_data = stock_data.reset_index(level=1, drop=True)
 
-        for stock_ticker in SMH_STOCKS:
-            try:
-                stock_data = backtest_data.loc[backtest_data.index.get_level_values(1) == stock_ticker]
-                stock_data = stock_data.reset_index(level=1, drop=True)
+                    etf_data = data_to_date.loc[data_to_date.index.get_level_values(1) == IGV_ETF]
+                    etf_data = etf_data.reset_index(level=1, drop=True)
 
-                etf_data = backtest_data.loc[backtest_data.index.get_level_values(1) == SMH_ETF]
-                etf_data = etf_data.reset_index(level=1, drop=True)
+                    if len(stock_data) > 60:
+                        signal_dict = generate_daily_signals(
+                            ticker=stock_ticker,
+                            stock_data=stock_data,
+                            etf_data=etf_data,
+                        )
+                        signal_dict["Sector"] = "Technology"
+                        signal_dict["Date"] = signal_date
+                        backtest_signals_list.append(signal_dict)
+                except Exception:
+                    continue
 
-                if len(stock_data) > 60:
-                    signal_dict = generate_daily_signals(
-                        ticker=stock_ticker,
-                        stock_data=stock_data,
-                        etf_data=etf_data,
-                    )
+            # Process SMH stocks
+            for stock_ticker in SMH_STOCKS:
+                try:
+                    stock_data = data_to_date.loc[data_to_date.index.get_level_values(1) == stock_ticker]
+                    stock_data = stock_data.reset_index(level=1, drop=True)
 
-                    signal_dict["Sector"] = "Semiconductor"
-                    signal_dict["Date"] = latest_date
-                    backtest_signals_list.append(signal_dict)
-            except Exception:
-                continue
+                    etf_data = data_to_date.loc[data_to_date.index.get_level_values(1) == SMH_ETF]
+                    etf_data = etf_data.reset_index(level=1, drop=True)
+
+                    if len(stock_data) > 60:
+                        signal_dict = generate_daily_signals(
+                            ticker=stock_ticker,
+                            stock_data=stock_data,
+                            etf_data=etf_data,
+                        )
+                        signal_dict["Sector"] = "Semiconductor"
+                        signal_dict["Date"] = signal_date
+                        backtest_signals_list.append(signal_dict)
+                except Exception:
+                    continue
 
         backtest_signals_df = pd.DataFrame(backtest_signals_list)
 
         # Initialize backtester
         backtester = Backtester(initial_cash=INITIAL_CASH, transaction_cost=TRANSACTION_COST)
 
-        # Run backtest
+        # Run backtest with full price data
         trades_df, equity_df = backtester.run(backtest_signals_df, backtest_data)
+
+        # Calculate backtest statistics
+        final_equity = equity_df['Equity'].iloc[-1] if len(equity_df) > 0 else INITIAL_CASH
+        total_return = (final_equity - INITIAL_CASH) / INITIAL_CASH * 100
+        num_trades = len(trades_df)
 
         print(f"  Backtest period: {backtest_start_date.strftime('%Y-%m-%d')} to {latest_date.strftime('%Y-%m-%d')}")
         print(f"  ✓ Backtest completed")
-        print(f"    - Total trades executed: {len(trades_df)}")
-        print(f"    - Final equity: ${equity_df['Equity'].iloc[-1] if len(equity_df) > 0 else INITIAL_CASH:,.2f}")
+        print(f"    - Initial capital: ${INITIAL_CASH:,.2f}")
+        print(f"    - Final equity: ${final_equity:,.2f}")
+        print(f"    - Total return: {total_return:+.2f}%")
+        print(f"    - Total trades executed: {num_trades}")
+        if num_trades > 0:
+            avg_win = trades_df[trades_df['pnl'] > 0]['pnl'].mean() if (trades_df['pnl'] > 0).any() else 0
+            avg_loss = trades_df[trades_df['pnl'] < 0]['pnl'].mean() if (trades_df['pnl'] < 0).any() else 0
+            print(f"    - Avg win trade: ${avg_win:,.2f}" if avg_win > 0 else "")
+            print(f"    - Avg loss trade: ${avg_loss:,.2f}" if avg_loss < 0 else "")
         print()
 
     except Exception as e:
         print(f"  ✗ Error during backtest: {str(e)}")
+        import traceback
+        traceback.print_exc()
         return
 
     # ========================================================================
