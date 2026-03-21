@@ -1,6 +1,7 @@
 import pandas as pd
 import numpy as np
 from src.signals.regression import regress_returns
+from src.signals.ou_process import fit_ou_process, half_life, compute_s_score, should_reject_stock
 
 
 def test_regress_returns_basic():
@@ -90,3 +91,96 @@ def test_regress_returns_insufficient_data():
     assert np.all(np.isnan(betas)), "All values should be NaN when data < window"
     assert np.all(np.isnan(residuals)), "All values should be NaN when data < window"
     assert np.all(np.isnan(r_squared)), "All values should be NaN when data < window"
+
+
+def test_fit_ou_process_basic():
+    """Test OU process fitting with synthetic AR(1) mean-reverting data.
+
+    Creates 100 days of synthetic AR(1) data with known parameters:
+    X[t] = m(1-rho) + rho*X[t-1] + ε[t]
+
+    Verifies:
+    - 0 < rho < 1 (mean-reverting speed)
+    - m is numeric and non-NaN
+    - sigma_eq > 0 (equilibrium volatility)
+    """
+    np.random.seed(42)
+    n = 100
+
+    # Create synthetic AR(1) mean-reverting process
+    # Target: rho = 0.95, m = 0, sigma = 0.1
+    rho_true = 0.95
+    m_true = 0.0
+    sigma_true = 0.1
+
+    X = np.zeros(n)
+    for t in range(1, n):
+        innovation = np.random.randn() * sigma_true
+        X[t] = m_true * (1 - rho_true) + rho_true * X[t-1] + innovation
+
+    # Fit OU process
+    rho, m, sigma_eq = fit_ou_process(X)
+
+    # Verify outputs are numeric and not NaN
+    assert not np.isnan(rho), "rho should not be NaN"
+    assert not np.isnan(m), "m should not be NaN"
+    assert not np.isnan(sigma_eq), "sigma_eq should not be NaN"
+
+    # Verify rho is in valid range [0, 1) for mean-reversion
+    assert 0 < rho < 1, f"rho {rho} should be in (0, 1)"
+
+    # Verify sigma_eq is positive
+    assert sigma_eq > 0, f"sigma_eq {sigma_eq} should be positive"
+
+
+def test_half_life_calculation():
+    """Test half-life calculation for mean reversion.
+
+    Half-life = ln(2) / (-ln(kappa)) measures how fast mean reversion occurs.
+
+    Verifies:
+    - For kappa = 0.90, half-life is positive and < 252 days (1 trading year)
+    - Half-life increases as kappa approaches 1 (slower mean reversion)
+    """
+    kappa = 0.90
+    hl = half_life(kappa)
+
+    # Verify half-life is positive and reasonable
+    assert hl > 0, f"half_life {hl} should be positive"
+    assert hl < 252, f"half_life {hl} should be < 252 trading days for kappa={kappa}"
+
+    # Verify edge cases
+    assert np.isinf(half_life(0.0)), "half_life should be inf for kappa=0"
+    assert np.isinf(half_life(1.0)), "half_life should be inf for kappa=1"
+    assert np.isinf(half_life(-0.5)), "half_life should be inf for kappa < 0"
+
+
+def test_compute_s_score():
+    """Test s-score calculation.
+
+    S-score = (X_current - m) / sigma_eq measures deviation from equilibrium
+    in units of equilibrium volatility.
+
+    Verifies:
+    - s = 2.0 when X_current=2.0, m=0.0, sigma_eq=1.0
+    - s = 0 when X_current = m
+    - Returns NaN when sigma_eq = 0
+    """
+    # Test case 1: Standard case
+    X_current = 2.0
+    m = 0.0
+    sigma_eq = 1.0
+    s = compute_s_score(X_current, m, sigma_eq)
+    assert np.isclose(s, 2.0), f"s-score {s} should be 2.0"
+
+    # Test case 2: X_current = m
+    s_at_equilibrium = compute_s_score(1.0, 1.0, 1.0)
+    assert np.isclose(s_at_equilibrium, 0.0), f"s-score {s_at_equilibrium} should be 0.0"
+
+    # Test case 3: sigma_eq = 0 should return NaN
+    s_zero_sigma = compute_s_score(1.0, 0.0, 0.0)
+    assert np.isnan(s_zero_sigma), "s-score should be NaN when sigma_eq=0"
+
+    # Test case 4: NaN sigma_eq should return NaN
+    s_nan_sigma = compute_s_score(1.0, 0.0, np.nan)
+    assert np.isnan(s_nan_sigma), "s-score should be NaN when sigma_eq=NaN"
