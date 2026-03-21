@@ -39,13 +39,21 @@ from src.plotting.visualizer import plot_equity_curve, print_signal_table
 # CONFIGURATION SECTION (Editable)
 # ============================================================================
 
-# Actual current holdings of IGV (iShares Global Tech ETF) - Updated March 2026
-SAAS_STOCKS = ["MSFT", "AAPL", "NVDA", "META", "GOOGL", "TSLA", "AVGO", "CRM", "ADBE", "CSCO"]
-SAAS_ETF = "IGV"
+# Top 20 Tech holdings (IGV - iShares Global Tech ETF)
+IGV_STOCKS = [
+    "MSFT", "AAPL", "META", "GOOGL", "TSLA", "AMZN", "CRM", "ORCL",
+    "PYPL", "SHOP", "OKTA", "TEAM", "NOW", "ZM", "DDOG", "CRWD",
+    "NET", "WDAY", "MDB", "NFLX"
+]
+IGV_ETF = "IGV"
 
-# Actual current holdings of SMH (iShares Semiconductor ETF) - Updated March 2026
-SEMI_STOCKS = ["NVDA", "TSM", "AVGO", "ASML", "INTC", "QCOM", "AMD", "AMAT", "LRCX", "KLAC"]
-SEMI_ETF = "SMH"
+# Top 20 Semiconductors (SMH - iShares Semiconductor ETF)
+SMH_STOCKS = [
+    "NVDA", "TSM", "INTC", "AMD", "QCOM", "ASML", "AMAT", "LRCX",
+    "KLAC", "MU", "NXPI", "MCHP", "MRVL", "SNPS", "CDNS", "AVGO",
+    "SMCI", "COHR", "SLAB", "SWKS"
+]
+SMH_ETF = "SMH"
 
 INITIAL_CASH = 10000
 TRANSACTION_COST = 0.001
@@ -69,11 +77,11 @@ def main():
     print("-" * 100)
     try:
         # Fetch SaaS stocks + ETF
-        saas_tickers = SAAS_STOCKS + [SAAS_ETF]
+        saas_tickers = IGV_STOCKS + [IGV_ETF]
         saas_data = fetch_data(saas_tickers, period=LOOKBACK_PERIOD)
 
         # Fetch Semiconductor stocks + ETF
-        semi_tickers = SEMI_STOCKS + [SEMI_ETF]
+        semi_tickers = SMH_STOCKS + [SMH_ETF]
         semi_data = fetch_data(semi_tickers, period=LOOKBACK_PERIOD)
 
         # Combine both datasets
@@ -81,7 +89,7 @@ def main():
 
         # Get statistics
         num_trading_days = len(all_data.index.get_level_values(0).unique())
-        num_stocks = len(SAAS_STOCKS) + len(SEMI_STOCKS)
+        num_stocks = len(IGV_STOCKS) + len(SMH_STOCKS)
         num_etfs = 2
 
         print(f"  ✓ Fetched {num_trading_days} trading days")
@@ -104,15 +112,15 @@ def main():
         # Initialize list to collect signals
         all_signals = []
 
-        # Process SaaS stocks vs IGV
-        for stock_ticker in SAAS_STOCKS:
+        # Process Tech stocks vs IGV
+        for stock_ticker in IGV_STOCKS:
             try:
                 # Get stock data
                 stock_data = all_data.loc[all_data.index.get_level_values(1) == stock_ticker]
                 stock_data = stock_data.reset_index(level=1, drop=True)
 
                 # Get ETF data
-                etf_data = all_data.loc[all_data.index.get_level_values(1) == SAAS_ETF]
+                etf_data = all_data.loc[all_data.index.get_level_values(1) == IGV_ETF]
                 etf_data = etf_data.reset_index(level=1, drop=True)
 
                 # Generate signals
@@ -125,7 +133,7 @@ def main():
                 )
 
                 # Add sector and date information
-                signal_dict["Sector"] = "SaaS"
+                signal_dict["Sector"] = "Technology"
                 signal_dict["Date"] = latest_date
 
                 all_signals.append(signal_dict)
@@ -135,14 +143,14 @@ def main():
                 continue
 
         # Process Semiconductor stocks vs SMH
-        for stock_ticker in SEMI_STOCKS:
+        for stock_ticker in SMH_STOCKS:
             try:
                 # Get stock data
                 stock_data = all_data.loc[all_data.index.get_level_values(1) == stock_ticker]
                 stock_data = stock_data.reset_index(level=1, drop=True)
 
                 # Get ETF data
-                etf_data = all_data.loc[all_data.index.get_level_values(1) == SEMI_ETF]
+                etf_data = all_data.loc[all_data.index.get_level_values(1) == SMH_ETF]
                 etf_data = etf_data.reset_index(level=1, drop=True)
 
                 # Generate signals
@@ -198,12 +206,12 @@ def main():
         # Create a full signals DataFrame for backtest period
         backtest_signals_list = []
 
-        for stock_ticker in SAAS_STOCKS:
+        for stock_ticker in IGV_STOCKS:
             try:
                 stock_data = backtest_data.loc[backtest_data.index.get_level_values(1) == stock_ticker]
                 stock_data = stock_data.reset_index(level=1, drop=True)
 
-                etf_data = backtest_data.loc[backtest_data.index.get_level_values(1) == SAAS_ETF]
+                etf_data = backtest_data.loc[backtest_data.index.get_level_values(1) == IGV_ETF]
                 etf_data = etf_data.reset_index(level=1, drop=True)
 
                 if len(stock_data) > 60:
@@ -213,18 +221,18 @@ def main():
                         etf_data=etf_data,
                     )
 
-                    signal_dict["Sector"] = "SaaS"
+                    signal_dict["Sector"] = "Technology"
                     signal_dict["Date"] = latest_date
                     backtest_signals_list.append(signal_dict)
             except Exception:
                 continue
 
-        for stock_ticker in SEMI_STOCKS:
+        for stock_ticker in SMH_STOCKS:
             try:
                 stock_data = backtest_data.loc[backtest_data.index.get_level_values(1) == stock_ticker]
                 stock_data = stock_data.reset_index(level=1, drop=True)
 
-                etf_data = backtest_data.loc[backtest_data.index.get_level_values(1) == SEMI_ETF]
+                etf_data = backtest_data.loc[backtest_data.index.get_level_values(1) == SMH_ETF]
                 etf_data = etf_data.reset_index(level=1, drop=True)
 
                 if len(stock_data) > 60:
@@ -321,11 +329,11 @@ def main():
     print("-" * 100)
     try:
         # Get benchmark data
-        igv_data = all_data.loc[all_data.index.get_level_values(1) == SAAS_ETF]
+        igv_data = all_data.loc[all_data.index.get_level_values(1) == IGV_ETF]
         igv_data = igv_data.reset_index()
         igv_data.columns = ["Date", "Ticker"] + list(igv_data.columns[2:])
 
-        smh_data = all_data.loc[all_data.index.get_level_values(1) == SEMI_ETF]
+        smh_data = all_data.loc[all_data.index.get_level_values(1) == SMH_ETF]
         smh_data = smh_data.reset_index()
         smh_data.columns = ["Date", "Ticker"] + list(smh_data.columns[2:])
 
