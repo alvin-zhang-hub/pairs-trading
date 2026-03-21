@@ -60,6 +60,13 @@ TRANSACTION_COST = 0.001
 LOOKBACK_PERIOD = "1y"
 BACKTEST_START_DAYS = 180
 
+# Optimized parameters from comprehensive grid search (2400 configurations)
+ENTRY_THRESHOLD = 0.75      # Aggressive entry (vs default 1.25)
+EXIT_THRESHOLD = 0.25       # Tight exits
+REGRESSION_WINDOW = 30      # Short responsive window (vs default 60)
+MAX_HALF_LIFE = 25          # Mean reversion speed filter
+USE_VOLUME_WEIGHTING = True # Critical for signal quality
+
 
 def main():
     """Main orchestration function for the pairs trading strategy."""
@@ -128,8 +135,11 @@ def main():
                     ticker=stock_ticker,
                     stock_data=stock_data,
                     etf_data=etf_data,
-                    window=60,
-                    max_half_life=20,  # OPTIMIZED: Tight half-life filter
+                    window=REGRESSION_WINDOW,
+                    max_half_life=MAX_HALF_LIFE,
+                    entry_threshold=ENTRY_THRESHOLD,
+                    exit_threshold=EXIT_THRESHOLD,
+                    use_volume_weighting=USE_VOLUME_WEIGHTING,
                 )
 
                 # Add sector and date information
@@ -158,8 +168,11 @@ def main():
                     ticker=stock_ticker,
                     stock_data=stock_data,
                     etf_data=etf_data,
-                    window=60,
-                    max_half_life=20,  # OPTIMIZED: Tight half-life filter
+                    window=REGRESSION_WINDOW,
+                    max_half_life=MAX_HALF_LIFE,
+                    entry_threshold=ENTRY_THRESHOLD,
+                    exit_threshold=EXIT_THRESHOLD,
+                    use_volume_weighting=USE_VOLUME_WEIGHTING,
                 )
 
                 # Add sector and date information
@@ -232,7 +245,11 @@ def main():
                             ticker=stock_ticker,
                             stock_data=stock_data,
                             etf_data=etf_data,
-                            max_half_life=20,  # OPTIMIZED: Tight filter improves Sharpe
+                            window=REGRESSION_WINDOW,
+                            max_half_life=MAX_HALF_LIFE,
+                            entry_threshold=ENTRY_THRESHOLD,
+                            exit_threshold=EXIT_THRESHOLD,
+                            use_volume_weighting=USE_VOLUME_WEIGHTING,
                         )
                         signal_dict["Sector"] = "Technology"
                         signal_dict["Date"] = signal_date
@@ -254,7 +271,11 @@ def main():
                             ticker=stock_ticker,
                             stock_data=stock_data,
                             etf_data=etf_data,
-                            max_half_life=20,  # OPTIMIZED: Tight filter improves Sharpe
+                            window=REGRESSION_WINDOW,
+                            max_half_life=MAX_HALF_LIFE,
+                            entry_threshold=ENTRY_THRESHOLD,
+                            exit_threshold=EXIT_THRESHOLD,
+                            use_volume_weighting=USE_VOLUME_WEIGHTING,
                         )
                         signal_dict["Sector"] = "Semiconductor"
                         signal_dict["Date"] = signal_date

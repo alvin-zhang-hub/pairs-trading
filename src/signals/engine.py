@@ -24,19 +24,25 @@ from src.signals.ou_process import (
 )
 
 
-def apply_trading_rules(s_score: float) -> str:
+def apply_trading_rules(
+    s_score: float,
+    entry_threshold: float = 1.25,
+    exit_threshold: float = 0.5
+) -> str:
     """Apply trading rules based on the s-score.
 
     The s-score measures how far the current residual is from equilibrium
     in units of equilibrium volatility. Trading rules are:
-    - Buy (oversold): s < -1.25 (expect reversion upward)
-    - Short (overbought): s > 1.25 (expect reversion downward)
-    - Hold (neutral): -0.50 <= s <= 0.75 (near equilibrium, no action)
-    - Close long: s > -0.50 (positive drift, exit long position)
-    - Close short: s < 0.75 (negative drift, exit short position)
+    - Buy (oversold): s < -entry_threshold (expect reversion upward)
+    - Short (overbought): s > entry_threshold (expect reversion downward)
+    - Hold (neutral): -exit_threshold <= s <= entry_threshold (near equilibrium, no action)
+    - Close long: s > -exit_threshold (positive drift, exit long position)
+    - Close short: s < exit_threshold (negative drift, exit short position)
 
     Args:
         s_score: Current s-score (standardized deviation from equilibrium)
+        entry_threshold: S-score threshold for entry signals (default 1.25)
+        exit_threshold: S-score threshold for exit signals (default 0.5)
 
     Returns:
         Signal string: one of "BUY", "SHORT", "HOLD", "CLOSE_LONG", "CLOSE_SHORT"
@@ -47,23 +53,23 @@ def apply_trading_rules(s_score: float) -> str:
         return "HOLD"
 
     # Oversold: expect reversion upward
-    if s_score < -1.25:
+    if s_score < -entry_threshold:
         return "BUY"
 
     # Overbought: expect reversion downward
-    if s_score > 1.25:
+    if s_score > entry_threshold:
         return "SHORT"
 
     # Neutral zone: stay flat
-    if -0.50 <= s_score <= 0.75:
+    if -exit_threshold <= s_score <= exit_threshold:
         return "HOLD"
 
     # Above neutral but not yet overbought: close long if holding
-    if s_score > -0.50:
+    if s_score > -exit_threshold:
         return "CLOSE_LONG"
 
     # Below neutral but not yet oversold: close short if holding
-    # (s_score < 0.75 and not in [-0.50, 0.75])
+    # (s_score < exit_threshold and not in [-exit_threshold, exit_threshold])
     return "CLOSE_SHORT"
 
 
@@ -73,6 +79,9 @@ def generate_daily_signals(
     etf_data: pd.DataFrame,
     window: int = 60,
     max_half_life: int = 30,
+    entry_threshold: float = 1.25,
+    exit_threshold: float = 0.5,
+    use_volume_weighting: bool = True,
 ) -> dict:
     """Generate daily trading signals for a stock-ETF pair.
 
@@ -109,6 +118,9 @@ def generate_daily_signals(
         etf_data: DataFrame with "Adj Close" and "Volume" columns
         window: Rolling window size for regression (default 60 days)
         max_half_life: Maximum acceptable half-life in trading days (default 30)
+        entry_threshold: S-score threshold for entry signals (default 1.25)
+        exit_threshold: S-score threshold for exit signals (default 0.5)
+        use_volume_weighting: Whether to apply volume weighting to returns (default True)
 
     Returns:
         Dictionary with keys:
@@ -124,8 +136,13 @@ def generate_daily_signals(
     try:
         # Step 1: Compute volume-weighted returns for both stock and ETF
         # These weight returns inversely by volume to amplify mean-reverting moves
-        stock_vwr = compute_volume_weighted_returns(stock_data)
-        etf_vwr = compute_volume_weighted_returns(etf_data)
+        if use_volume_weighting:
+            stock_vwr = compute_volume_weighted_returns(stock_data)
+            etf_vwr = compute_volume_weighted_returns(etf_data)
+        else:
+            # Use raw returns without volume weighting
+            stock_vwr = stock_data["Adj Close"].pct_change()
+            etf_vwr = etf_data["Adj Close"].pct_change()
 
         # Step 2: Align to common dates (intersection of indices)
         common_dates = stock_vwr.index.intersection(etf_vwr.index)
@@ -189,8 +206,8 @@ def generate_daily_signals(
         else:
             volume_ratio = 1.0
 
-        # Step 10: Apply trading rules
-        signal = apply_trading_rules(s_score)
+        # Step 10: Apply trading rules with custom thresholds
+        signal = apply_trading_rules(s_score, entry_threshold, exit_threshold)
 
         return {
             "Ticker": ticker,
