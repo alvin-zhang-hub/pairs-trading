@@ -19,7 +19,7 @@ EMA_FAST_ATR_PCT_THRESHOLD = 0.025  # ATR/price >2.5% → use 9 EMA
 
 # Regime
 BREADTH_EMA_PERIOD = 20
-BREADTH_MIN_VALID_PCT = 0.80
+BREADTH_MIN_VALID_PCT = 0.80  # skip breadth factor if fewer than 80% of tickers return valid data
 SECTOR_GROWTH = ['XLK', 'XLY']
 SECTOR_DEFENSIVE = ['XLU', 'XLP', 'XLV']
 SECTOR_LOOKBACK_DAYS = 5
