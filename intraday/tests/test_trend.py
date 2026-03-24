@@ -77,10 +77,10 @@ class TestClassifyPriceStructure:
 
 class TestClassifyTrend:
     def _make_uptrend_hist(self):
-        """20 candles with rising closes, clear HH/HL structure."""
-        closes = [float(50 + i * 0.5) for i in range(25)]
-        highs = [c + 0.5 for c in closes]
-        lows = [c - 0.5 for c in closes]
+        """25 candles with explicit zigzag: HH at [2,7,12,17,22], HL at [4,9,14,19]."""
+        highs  = [52,52,54,52,50,53,53,56,53,51,54,54,58,54,52,55,55,60,55,53,56,56,62,56,56]
+        lows   = [50,50,52,50,47,51,51,54,51,49,52,52,56,52,51,53,53,58,53,52,54,54,60,54,54]
+        closes = [(h + l) / 2 for h, l in zip(highs, lows)]
         return make_hist(highs, lows, closes)
 
     def _make_downtrend_hist(self):

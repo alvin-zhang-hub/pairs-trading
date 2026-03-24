@@ -20,7 +20,7 @@ def make_df(**overrides):
 
 class TestPriceFilter:
     def test_passes_within_range(self):
-        assert len(apply_filters(make_df(close=100.0))) == 1
+        assert len(apply_filters(make_df(close=100.0, atr_14=2.0))) == 1
 
     def test_excludes_below_min(self):
         assert len(apply_filters(make_df(close=9.0))) == 0

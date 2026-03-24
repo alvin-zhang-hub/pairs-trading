@@ -85,15 +85,6 @@ def classify_trend(
 
     structure = classify_price_structure(sh_vals, sl_vals)
 
-    # When swing-point structure is indeterminate, fall back to close direction
-    if structure == "Sideways" and len(sh_vals) < 3 and len(sl_vals) < 3:
-        close_first = float(recent["Close"].iloc[0])
-        if close_last > close_first:
-            structure = "Uptrend"
-        elif close_last < close_first:
-            structure = "Downtrend"
-        # else remains "Sideways"
-
     if price_above_both and ema_20_above_50 and structure == "Uptrend":
         return "Uptrend"
     if price_below_both and ema_20_below_50 and structure == "Downtrend":
