@@ -33,11 +33,14 @@ class TestComputeATR:
         assert compute_atr(wide["High"], wide["Low"], wide["Close"]) > \
                compute_atr(narrow["High"], narrow["Low"], narrow["Close"])
 
-    def test_returns_none_on_insufficient_data(self):
+    def test_returns_nan_on_insufficient_data(self):
+        # compute_atr returns float('nan') when series is shorter than period (14).
+        # The function does not raise — callers are responsible for guarding nan.
+        # fetch_ticker_data guards via the len(hist) < 22 check before calling.
         hist = make_hist(5)
         result = compute_atr(hist["High"], hist["Low"], hist["Close"])
-        # ATR with fewer than period candles returns NaN — we handle upstream
-        assert result is not None  # function itself doesn't raise
+        assert isinstance(result, float)
+        assert np.isnan(result)
 
 
 class TestFetchTickerData:

@@ -5,7 +5,11 @@ from typing import Optional
 
 
 def compute_atr(high: pd.Series, low: pd.Series, close: pd.Series, period: int = 14) -> float:
-    """Compute ATR using Wilder's smoothing. Returns the most recent ATR value."""
+    """Compute ATR using Wilder's smoothing. Returns the most recent ATR value.
+
+    Returns float('nan') if the series has fewer than `period` rows — callers
+    must guard against nan. fetch_ticker_data ensures >= 22 rows before calling.
+    """
     tr = pd.concat([
         high - low,
         (high - close.shift(1)).abs(),
