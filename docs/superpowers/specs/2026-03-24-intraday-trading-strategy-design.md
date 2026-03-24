@@ -169,7 +169,7 @@ Priority: default stop first. Only consider the midpoint stop if the default sto
 
 - Target: minimum 2:1 R:R based on the chosen stop distance
 - ATR sanity check: target (2:1) must be ≤ 2x ATR from entry — if not, the setup does not offer a reachable target and should be skipped
-- Scale: 50% off at 1:1, stop to breakeven, 50% runs to 2:1+
+- Scale: 50% off at 1:1, stop to breakeven (= entry price), 50% runs to 2:1+
 
 **Invalidation**
 - Entry price >0.5% above ORB high (chasing — do not enter)
@@ -201,7 +201,7 @@ Priority: default stop first. Only consider the midpoint stop if the default sto
 - Stop: below the pullback candle low (long) or above it (short) — typically 0.25–0.5x ATR from the EMA
 - If stop distance >0.75x ATR: skip (pullback is too deep)
 - Target: 2:1 R:R minimum; ATR-based target at 1.5–2x ATR from entry
-- Scale: 50% at 1:1, stop to breakeven, trail remainder with 9 EMA on 5-min
+- Scale: 50% at 1:1, stop to breakeven (= entry price), trail remainder with 9 EMA on 5-min
 
 **Invalidation**
 - Pullback depth exceeds 1x ATR (likely a trend reversal, not a pullback)
@@ -230,9 +230,9 @@ Priority: default stop first. Only consider the midpoint stop if the default sto
 **Stop & Target**
 - Long stop: 0.25–0.5x ATR below VWAP
 - Short stop: 0.25–0.5x ATR above VWAP
-- If stop distance >0.75x ATR: reduce size by 50% or skip
+- If stop distance >0.75x ATR: reduce size by 50% or skip. VWAP reclaim is the only setup where an oversized stop may be taken at half position — this reflects the fact that VWAP is a floating level and the stop must clear it by a sufficient margin. ORB and EMA pullback setups skip outright when stop distance exceeds the threshold.
 - Target: 2:1 R:R minimum. Anchor to logical levels — prior high/low, round numbers, or +1x ATR from entry
-- Scale: 50% at 1:1, stop to breakeven, trail remainder
+- Scale: 50% at 1:1, stop to breakeven (= entry price), trail remainder
 
 **Invalidation**
 - Price crosses back through VWAP within 2 candles of entry (false reclaim — exit immediately)
@@ -389,7 +389,7 @@ intraday/
 ├── scanner/
 │   ├── __init__.py
 │   ├── fetcher.py             # pulls OHLCV, ATR, EMA, gap, RVOL via yfinance
-│   ├── filters.py             # price, volume, ATR, gap, RVOL filters
+│   ├── filters.py             # price, volume, ATR, gap, RVOL filters; computes ema column (9 vs 21) from gap% and ATR%
 │   ├── trend.py               # trend classification (3-bar fractal swing detection)
 │   └── scanner.py             # orchestrates scan, produces ranked CSV output
 ├── regime/
