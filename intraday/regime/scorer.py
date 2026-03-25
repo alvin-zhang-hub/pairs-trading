@@ -28,7 +28,7 @@ def score_qqq_ema(qqq_close: float, ema_20: float, ema_50: float) -> int:
     return 0
 
 
-def score_qqq_structure(qqq_hist: pd.DataFrame, lookback: int = 10) -> int:
+def score_qqq_structure(qqq_hist: pd.DataFrame, lookback: int = 20) -> int:
     """Score QQQ price structure using 3-bar fractal over last `lookback` days."""
     recent = qqq_hist.tail(lookback)
     sh_idxs = find_swing_highs(recent["High"])

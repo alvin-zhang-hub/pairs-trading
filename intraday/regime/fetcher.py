@@ -92,18 +92,28 @@ def fetch_put_call_ratio(lookback_days: int = 5) -> Optional[float]:
             resp = requests.get(url, timeout=10)
             if resp.status_code == 200:
                 lines = resp.text.strip().split("\n")
-                # Find header to locate EQUITY column, or fall back to last column
                 header = lines[0].upper().split(",") if lines else []
-                equity_col = header.index("EQUITY") if "EQUITY" in header else -1
-                for line in lines[1:]:
-                    parts = line.split(",")
-                    if len(parts) > abs(equity_col):
-                        try:
-                            val = float(parts[equity_col].strip())
-                            ratios.append(val)
-                            break
-                        except ValueError:
-                            pass
+                if "EQUITY" in header:
+                    # Well-formed CSV: EQUITY is a column header
+                    col_idx = header.index("EQUITY")
+                    for line in lines[1:]:
+                        parts = line.split(",")
+                        if len(parts) > col_idx:
+                            try:
+                                ratios.append(float(parts[col_idx].strip()))
+                                break
+                            except ValueError:
+                                pass
+                else:
+                    # CBOE row-label format: scan data rows for "EQUITY" in content
+                    for line in lines[1:]:
+                        if "EQUITY" in line.upper():
+                            parts = line.split(",")
+                            try:
+                                ratios.append(float(parts[-1].strip()))
+                                break
+                            except ValueError:
+                                pass
         except Exception:
             pass
         check_date -= timedelta(days=1)
