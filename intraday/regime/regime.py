@@ -1,8 +1,8 @@
 import json
 import logging
+import pathlib
 import pandas as pd
 from datetime import date
-from typing import Optional
 from regime.fetcher import (
     fetch_qqq_data, fetch_vix, fetch_sector_returns,
     fetch_sp500_breadth, fetch_put_call_ratio,
@@ -10,7 +10,7 @@ from regime.fetcher import (
 from regime.scorer import compute_regime
 from config import SP500_WIKI_URL
 
-LAST_REGIME_PATH = "regime/last_regime.json"
+LAST_REGIME_PATH = pathlib.Path(__file__).parent / "last_regime.json"
 
 SCORE_LABELS = {
     1: "+1", 0: " 0", -1: "-1",
@@ -46,8 +46,9 @@ def print_regime(result: dict) -> None:
     print(f"RISK PER TRADE:       {result['risk_pct']*100:.2f}%  "
           f"(${result['dollar_risk']:.0f} on $20k)")
     long_str = ", ".join(result["long_setups"]) if result["long_setups"] else "OFF"
+    short_str = ", ".join(result["short_setups"]) if result["short_setups"] else "OFF"
     print(f"LONG SETUPS:          {long_str}")
-    print(f"SHORT SETUPS:         {', '.join(result['short_setups'])}\n")
+    print(f"SHORT SETUPS:         {short_str}\n")
 
 
 def run_regime() -> dict:

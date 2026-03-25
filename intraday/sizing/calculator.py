@@ -4,7 +4,7 @@ import os
 from typing import Optional
 from config import ACCOUNT_SIZE, MAX_OPEN_RISK, MAX_POSITION_PCT
 
-LAST_REGIME_PATH = "regime/last_regime.json"
+LAST_REGIME_PATH = os.path.join(os.path.dirname(__file__), "..", "regime", "last_regime.json")
 
 
 def load_regime() -> Optional[dict]:
@@ -52,14 +52,14 @@ def calculate_size(
 
     warnings, blocks = [], []
 
-    if atr and stop_distance > atr:
+    if atr is not None and atr > 0 and stop_distance > atr:
         warnings.append(
             f"Stop distance ${stop_distance:.2f} > 1x ATR ${atr:.2f} — consider skipping"
         )
 
-    if atr and abs(target_2 - entry) > 2 * atr:
+    if atr is not None and atr > 0 and abs(target_2 - entry) > 2 * atr:
         warnings.append(
-            f"Target 2 is >{2}x ATR from entry — may not be reachable"
+            f"Target 2 is >2x ATR from entry — may not be reachable"
         )
 
     if position_value > ACCOUNT_SIZE * MAX_POSITION_PCT:
@@ -87,8 +87,8 @@ def calculate_size(
         "position_value": round(position_value, 2),
         "target_1": round(target_1, 4),
         "target_2": round(target_2, 4),
-        "atr_multiples_stop": round(stop_distance / atr, 2) if atr else None,
-        "atr_multiples_target": round(abs(target_2 - entry) / atr, 2) if atr else None,
+        "atr_multiples_stop": round(stop_distance / atr, 2) if (atr is not None and atr > 0) else None,
+        "atr_multiples_target": round(abs(target_2 - entry) / atr, 2) if (atr is not None and atr > 0) else None,
         "warnings": warnings,
         "blocks": blocks,
     }
