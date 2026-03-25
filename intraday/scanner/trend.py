@@ -40,13 +40,13 @@ def classify_price_structure(swing_highs_vals: list, swing_lows_vals: list) -> s
     if len(swing_highs_vals) < 3 or len(swing_lows_vals) < 3:
         return "Sideways"
 
-    h = swing_highs_vals[-3:]
-    l = swing_lows_vals[-3:]
+    highs = swing_highs_vals[-3:]
+    lows = swing_lows_vals[-3:]
 
-    hh = sum(h[i] > h[i - 1] for i in range(1, 3))
-    hl = sum(l[i] > l[i - 1] for i in range(1, 3))
-    lh = sum(h[i] < h[i - 1] for i in range(1, 3))
-    ll = sum(l[i] < l[i - 1] for i in range(1, 3))
+    hh = sum(highs[i] > highs[i - 1] for i in range(1, 3))
+    hl = sum(lows[i] > lows[i - 1] for i in range(1, 3))
+    lh = sum(highs[i] < highs[i - 1] for i in range(1, 3))
+    ll = sum(lows[i] < lows[i - 1] for i in range(1, 3))
 
     if hh >= 2 and hl >= 2:
         return "Uptrend"
@@ -71,6 +71,8 @@ def classify_trend(
     recent = hist.tail(window)
     ema_20_last = float(ema_20.reindex(recent.index).iloc[-1])
     ema_50_last = float(ema_50.reindex(recent.index).iloc[-1])
+    if pd.isna(ema_20_last) or pd.isna(ema_50_last):
+        return "Sideways"
     close_last = float(recent["Close"].iloc[-1])
 
     price_above_both = close_last > ema_20_last and close_last > ema_50_last
@@ -99,4 +101,4 @@ def get_eligible_setups(trend: TrendLabel) -> list:
         "Downtrend": ["ema_pullback_short", "vwap_reclaim_short"],
         "Sideways": ["vwap_reclaim_long", "vwap_reclaim_short"],
     }
-    return mapping[trend]
+    return mapping.get(trend, [])

@@ -1,4 +1,4 @@
-import logging
+import numpy as np
 import pandas as pd
 from config import (
     PRICE_MIN, PRICE_MAX, AVG_VOLUME_MIN, FLOAT_MIN, FLOAT_MAX,
@@ -23,14 +23,9 @@ def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
     # Step 2: Average volume
     df = df[df["avg_volume_20d"] >= AVG_VOLUME_MIN]
 
-    # Step 3: Float — best-effort, skip (do not exclude) when None
+    # Step 3: Float — best-effort, skip (do not exclude) when None/NaN
     has_float = df["float_shares"].notna()
-    excluded = df[has_float & (
-        (df["float_shares"] < FLOAT_MIN) | (df["float_shares"] > FLOAT_MAX)
-    )]
-    if len(excluded) > 0:
-        logging.warning("Float filter excluded: %s", excluded["ticker"].tolist())
-    df = df[~df.index.isin(excluded.index)]
+    df = df[~has_float | ((df["float_shares"] >= FLOAT_MIN) & (df["float_shares"] <= FLOAT_MAX))]
 
     # Step 4: ATR (dollar and percent)
     df["atr_pct"] = df["atr_14"] / df["close"]
@@ -43,12 +38,9 @@ def apply_filters(df: pd.DataFrame) -> pd.DataFrame:
     df = df[df["rvol"] >= RVOL_MIN]
 
     # EMA column: 9 for high-momentum stocks, 21 otherwise
-    df["ema"] = df.apply(
-        lambda row: 9
-        if (row["gap_pct"] >= EMA_FAST_GAP_THRESHOLD
-            or row["atr_pct"] >= EMA_FAST_ATR_PCT_THRESHOLD)
-        else 21,
-        axis=1,
+    df["ema"] = np.where(
+        (df["gap_pct"] >= EMA_FAST_GAP_THRESHOLD) | (df["atr_pct"] >= EMA_FAST_ATR_PCT_THRESHOLD),
+        9, 21,
     )
 
     return df.reset_index(drop=True)
