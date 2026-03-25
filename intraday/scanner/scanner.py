@@ -14,7 +14,8 @@ def get_universe() -> list:
     """Fetch S&P 500 tickers from Wikipedia. Returns empty list on failure."""
     import io, requests
     try:
-        resp = requests.get(SP500_WIKI_URL, timeout=15)
+        resp = requests.get(SP500_WIKI_URL, timeout=15,
+                            headers={"User-Agent": "Mozilla/5.0"})
         resp.raise_for_status()
         tables = pd.read_html(io.StringIO(resp.text))
         tickers = tables[0]["Symbol"].tolist()

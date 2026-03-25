@@ -20,7 +20,8 @@ SCORE_LABELS = {
 def load_sp500_tickers() -> list:
     import io, requests
     try:
-        resp = requests.get(SP500_WIKI_URL, timeout=15)
+        resp = requests.get(SP500_WIKI_URL, timeout=15,
+                            headers={"User-Agent": "Mozilla/5.0"})
         resp.raise_for_status()
         tables = pd.read_html(io.StringIO(resp.text))
         return [t.replace(".", "-") for t in tables[0]["Symbol"].tolist()]
