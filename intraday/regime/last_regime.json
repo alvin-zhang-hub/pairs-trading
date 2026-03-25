@@ -1,0 +1,15 @@
+{
+  "date": "2026-03-24",
+  "regime": "Bull",
+  "risk_pct": 0.0125,
+  "dollar_risk": 250.0,
+  "total_score": 2,
+  "long_setups": [
+    "orb",
+    "ema_pullback",
+    "vwap_reclaim"
+  ],
+  "short_setups": [
+    "vwap_reclaim"
+  ]
+}
