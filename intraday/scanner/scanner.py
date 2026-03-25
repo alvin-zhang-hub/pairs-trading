@@ -1,4 +1,5 @@
 import logging
+import os
 import yfinance as yf
 import pandas as pd
 from datetime import date
@@ -49,7 +50,8 @@ def run_scan(tickers: Optional[list] = None) -> pd.DataFrame:
             ema_20 = hist["Close"].ewm(span=20, adjust=False).mean()
             ema_50 = hist["Close"].ewm(span=50, adjust=False).mean()
             trend = classify_trend(hist, ema_20, ema_50)
-        except Exception:
+        except Exception as e:
+            logging.warning("Trend classification failed for %s: %s", row["ticker"], e)
             trend = "Sideways"
         trends.append(trend)
         setups_list.append(", ".join(get_eligible_setups(trend)))
@@ -65,8 +67,8 @@ def save_watchlist(df: pd.DataFrame, output_dir: str = ".") -> tuple:
     Returns (csv_path, txt_path).
     """
     today = date.today().strftime("%Y-%m-%d")
-    csv_path = f"{output_dir}/watchlist_{today}.csv"
-    txt_path = f"{output_dir}/watchlist.txt"
+    csv_path = os.path.join(output_dir, f"watchlist_{today}.csv")
+    txt_path = os.path.join(output_dir, "watchlist.txt")
 
     out = df[["ticker", "close", "gap_pct", "rvol", "atr_14", "atr_pct",
               "float_shares", "trend", "ema", "setups"]].copy()
