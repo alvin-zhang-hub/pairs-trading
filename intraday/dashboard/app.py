@@ -1,5 +1,6 @@
 import traceback
-from datetime import datetime, timezone, timedelta
+from datetime import datetime
+from zoneinfo import ZoneInfo
 
 from flask import Flask, redirect, url_for
 
@@ -9,10 +10,10 @@ from dashboard.charts import build_sparkline, build_gauge, build_breadth_trend
 
 app = Flask(__name__)
 
-_ET = timezone(timedelta(hours=-4))  # EDT (UTC-4); adjust to -5 in winter if needed
+_ET = ZoneInfo("America/New_York")
 
 
-def _market_status() -> tuple:
+def _market_status() -> tuple[str, str]:
     """Return (label, dot_color) based on current ET time."""
     now = datetime.now(_ET)
     is_weekday = now.weekday() < 5
@@ -185,6 +186,8 @@ def index():
         error = "Failed to fetch index prices. Showing cached breadth data only."
         index_data = {"SPY": {}, "QQQ": {}, "IWM": {}, "qqq_vs_spy": 0.0, "iwm_vs_spy": 0.0}
 
+    # NOTE: on first run or cache miss, get_breadth_series() fetches ~500 tickers
+    # and blocks for 1-3 minutes. This is expected behaviour for a local dashboard.
     breadth_series = get_breadth_series()
     return _render_dashboard(index_data, breadth_series, error=error)
 
