@@ -23,7 +23,7 @@ def compute_sparkline(closes: pd.Series, n: int = 5) -> list:
 
 def fetch_index_data() -> dict:
     """
-    Download 1 month of daily closes for SPY, QQQ, IWM.
+    Download 3 months of daily closes for SPY, QQQ, IWM.
     Returns a dict with price, day/week/month pct changes, sparkline,
     and QQQ-vs-SPY / IWM-vs-SPY weekly deltas.
 
@@ -34,6 +34,10 @@ def fetch_index_data() -> dict:
     )
     closes = raw["Close"]  # DataFrame: rows=dates, cols=SPY/QQQ/IWM
 
+    missing = [t for t in TICKERS if t not in closes.columns]
+    if missing:
+        raise ValueError(f"yfinance did not return data for: {missing}")
+
     result = {}
     for ticker in TICKERS:
         s = closes[ticker].dropna()
@@ -43,9 +47,8 @@ def fetch_index_data() -> dict:
             "week_pct":   compute_pct_change(s, 5),
             "month_pct":  compute_pct_change(s, 21),
             "sparkline":  compute_sparkline(s),
-            "week_return": compute_pct_change(s, 5),
         }
 
-    result["qqq_vs_spy"] = result["QQQ"]["week_return"] - result["SPY"]["week_return"]
-    result["iwm_vs_spy"] = result["IWM"]["week_return"] - result["SPY"]["week_return"]
+    result["qqq_vs_spy"] = result["QQQ"]["week_pct"] - result["SPY"]["week_pct"]
+    result["iwm_vs_spy"] = result["IWM"]["week_pct"] - result["SPY"]["week_pct"]
     return result
