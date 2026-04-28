@@ -25,8 +25,8 @@ def build_sparkline(closes: list, week_change: float) -> str:
         hoverinfo="skip",
     ))
     fig.update_layout(
-        paper_bgcolor=_BG,
-        plot_bgcolor=_BG,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
         margin={"l": 0, "r": 0, "t": 0, "b": 0},
         width=200,
         height=60,
@@ -37,10 +37,11 @@ def build_sparkline(closes: list, week_change: float) -> str:
     return fig.to_html(full_html=False, include_plotlyjs=False, config={"displayModeBar": False})
 
 
-def build_gauge(pct: float, label: str) -> str:
+def build_gauge(pct: float) -> str:
     """
     Return an HTML div with a circular gauge showing pct (0.0–1.0).
     Arc color: green >60%, yellow 40–60%, red <40%.
+    Label and count are rendered by the caller in HTML.
     """
     value = round(pct * 100, 1)
     if pct > 0.60:
@@ -53,30 +54,23 @@ def build_gauge(pct: float, label: str) -> str:
     fig = go.Figure(go.Indicator(
         mode="gauge+number",
         value=value,
-        number={"suffix": "%", "font": {"color": bar_color, "size": 36}},
+        number={"suffix": "%", "font": {"color": bar_color, "size": 32}},
         gauge={
             "axis": {"range": [0, 100], "visible": False},
             "bar":  {"color": bar_color, "thickness": 0.25},
-            "bgcolor": "#1e293b",
+            "bgcolor": "#263347",
             "borderwidth": 0,
             "threshold": {"line": {"color": "white", "width": 0}, "thickness": 0, "value": 0},
         },
         domain={"x": [0, 1], "y": [0, 1]},
     ))
     fig.update_layout(
-        paper_bgcolor=_BG,
-        plot_bgcolor=_BG,
-        margin={"l": 20, "r": 20, "t": 20, "b": 20},
-        width=220,
-        height=180,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        margin={"l": 16, "r": 16, "t": 16, "b": 8},
+        width=200,
+        height=160,
         font={"color": _TEXT},
-        annotations=[{
-            "text": label,
-            "x": 0.5, "y": -0.12,
-            "xref": "paper", "yref": "paper",
-            "showarrow": False,
-            "font": {"size": 11, "color": "#94a3b8"},
-        }],
     )
     return fig.to_html(full_html=False, include_plotlyjs=False, config={"displayModeBar": False})
 
@@ -112,7 +106,7 @@ def build_breadth_trend(series: list) -> str:
         paper_bgcolor=_BG,
         plot_bgcolor="#111827",
         font={"color": _TEXT},
-        margin={"l": 50, "r": 60, "t": 40, "b": 40},
+        margin={"l": 50, "r": 60, "t": 40, "b": 80},
         height=380,
         xaxis={
             "gridcolor": "#1e293b",
@@ -139,10 +133,10 @@ def build_breadth_trend(series: list) -> str:
         },
         legend={
             "orientation": "h",
-            "yanchor": "bottom",
-            "y": 1.02,
-            "xanchor": "left",
-            "x": 0,
+            "yanchor": "top",
+            "y": -0.18,
+            "xanchor": "center",
+            "x": 0.5,
         },
         hovermode="x unified",
     )
