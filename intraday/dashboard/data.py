@@ -1,6 +1,8 @@
+import io
 import json
 import logging
 import pathlib
+import requests
 from datetime import date
 
 import pandas as pd
@@ -56,8 +58,6 @@ def fetch_index_data() -> dict:
 
 def _load_sp500_tickers() -> list:
     """Reuse existing Wikipedia fetch; fall back to a short hardcoded list."""
-    import io
-    import requests
     try:
         resp = requests.get(
             "https://en.wikipedia.org/wiki/List_of_S%26P_500_companies",
@@ -94,7 +94,6 @@ def _compute_today_breadth(tickers: list) -> list | None:
             return None
 
         valid = closes.notna()
-        n_valid = valid.sum(axis=1).replace(0, pd.NA)
 
         sma10  = closes.rolling(10).mean()
         sma20  = closes.rolling(20).mean()
@@ -146,8 +145,8 @@ def get_breadth_series(cache_path: pathlib.Path = CACHE_PATH) -> list:
             cached = json.loads(cache_path.read_text())
             if cached.get("date") == today:
                 return cached["series"]
-        except Exception:
-            pass
+        except Exception as exc:
+            logging.warning("Failed to read breadth cache: %s", exc)
 
     tickers = _load_sp500_tickers()
     series = _compute_today_breadth(tickers)
@@ -156,8 +155,8 @@ def get_breadth_series(cache_path: pathlib.Path = CACHE_PATH) -> list:
         if cache_path.exists():
             try:
                 return json.loads(cache_path.read_text()).get("series", [])
-            except Exception:
-                pass
+            except Exception as exc:
+                logging.warning("Failed to read stale breadth cache: %s", exc)
         return []
 
     payload = {"date": today, "series": series}
