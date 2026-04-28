@@ -53,6 +53,7 @@ def _render_dashboard(index_data: dict, breadth_series: list, error: str | None 
     trend_html = build_breadth_trend(breadth_series)
 
     market_label, dot_color = _market_status()
+    refresh_time = datetime.now(_ET).strftime("%-I:%M %p ET · %b %-d")
 
     def fmt_pct(v):
         sign = "+" if v >= 0 else ""
@@ -144,6 +145,7 @@ def _render_dashboard(index_data: dict, breadth_series: list, error: str | None 
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;border-bottom:1px solid #1e293b;padding-bottom:16px">
     <h2>Market Health Dashboard</h2>
     <div style="display:flex;align-items:center;gap:16px">
+      <span style="font-size:13px;color:#64748b">Updated {refresh_time}</span>
       <span style="font-size:13px;color:#94a3b8">
         <span style="color:{dot_color}">●</span> {market_label}
       </span>
@@ -179,25 +181,25 @@ def _render_dashboard(index_data: dict, breadth_series: list, error: str | None 
   <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:space-around;margin-bottom:32px">
     <div style="background:#1e293b;border-radius:10px;padding:16px 12px 20px;text-align:center;flex:1;min-width:160px">
       <div style="font-size:10px;font-weight:600;color:#64748b;letter-spacing:1.5px;margin-bottom:4px">DAY-OF BREADTH</div>
-      {gauge_day}
+      <div style="display:flex;justify-content:center">{gauge_day}</div>
       <div style="font-size:26px;font-weight:700;color:#facc15;margin-top:4px">{count_day}</div>
       <div style="font-size:10px;color:#64748b;margin-top:2px">STOCKS POSITIVE TODAY</div>
     </div>
     <div style="background:#1e293b;border-radius:10px;padding:16px 12px 20px;text-align:center;flex:1;min-width:160px">
       <div style="font-size:10px;font-weight:600;color:#64748b;letter-spacing:1.5px;margin-bottom:4px">10-DAY SMA</div>
-      {gauge_10}
+      <div style="display:flex;justify-content:center">{gauge_10}</div>
       <div style="font-size:26px;font-weight:700;color:#facc15;margin-top:4px">{count_10}</div>
       <div style="font-size:10px;color:#64748b;margin-top:2px">ABOVE 10-DAY SMA</div>
     </div>
     <div style="background:#1e293b;border-radius:10px;padding:16px 12px 20px;text-align:center;flex:1;min-width:160px">
       <div style="font-size:10px;font-weight:600;color:#64748b;letter-spacing:1.5px;margin-bottom:4px">20-DAY SMA</div>
-      {gauge_20}
+      <div style="display:flex;justify-content:center">{gauge_20}</div>
       <div style="font-size:26px;font-weight:700;color:#facc15;margin-top:4px">{count_20}</div>
       <div style="font-size:10px;color:#64748b;margin-top:2px">ABOVE 20-DAY SMA</div>
     </div>
     <div style="background:#1e293b;border-radius:10px;padding:16px 12px 20px;text-align:center;flex:1;min-width:160px">
       <div style="font-size:10px;font-weight:600;color:#64748b;letter-spacing:1.5px;margin-bottom:4px">200-DAY SMA</div>
-      {gauge_200}
+      <div style="display:flex;justify-content:center">{gauge_200}</div>
       <div style="font-size:26px;font-weight:700;color:#facc15;margin-top:4px">{count_200}</div>
       <div style="font-size:10px;color:#64748b;margin-top:2px">ABOVE 200-DAY SMA</div>
     </div>
