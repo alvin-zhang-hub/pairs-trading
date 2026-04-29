@@ -1,0 +1,42 @@
+# .github/workflows/daily-jobs.yml
+name: Daily Job Hunter
+
+on:
+  schedule:
+    # 5pm ET = 9pm UTC (EDT). During EST it runs at 4pm ET.
+    - cron: '0 21 * * *'
+  workflow_dispatch:  # manual trigger
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-email:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run job hunter pipeline
+        env:
+          GMAIL_ADDRESS: ${{ secrets.GMAIL_ADDRESS }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+        run: python orchestrator.py
+
+      - name: Commit updated database
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/jobs.db
+          git diff --staged --quiet || git commit -m "chore: update jobs.db [skip ci]"
+          git push
