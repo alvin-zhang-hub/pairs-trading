@@ -132,6 +132,24 @@ def _compute_today_breadth(tickers: list) -> list | None:
         return None
 
 
+def fetch_pe_data() -> dict:
+    """
+    Fetch current trailing PE ratios for SPY, QQQ, IWM using yfinance.
+    Returns dict: {"SPY": 18.5, "QQQ": 22.3, "IWM": 14.2}
+    Uses 0.0 as placeholder if PE is unavailable for a ticker.
+    """
+    result = {}
+    for ticker in TICKERS:
+        try:
+            info = yf.Ticker(ticker).info
+            pe = info.get("trailingPE")
+            result[ticker] = float(pe) if pe and pe > 0 else 0.0
+        except Exception as exc:
+            logging.warning(f"Failed to fetch PE for {ticker}: {exc}")
+            result[ticker] = 0.0
+    return result
+
+
 def get_breadth_series(cache_path: pathlib.Path = CACHE_PATH) -> list:
     """
     Return YTD breadth series as a list of dicts.
