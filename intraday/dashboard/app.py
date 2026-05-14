@@ -1,14 +1,20 @@
+import os
 import traceback
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
-from flask import Flask, redirect, url_for
+from flask import Flask, redirect, request, url_for
 
 from dashboard.data import fetch_index_data, get_breadth_series
 from dashboard.regime import classify_regime
 from dashboard.charts import build_sparkline, build_gauge, build_breadth_trend
+from lighthouse.dashboard_view import render_scanner_page
 
 app = Flask(__name__)
+
+_SCANNER_CACHE = os.path.join(
+    os.path.dirname(__file__), "..", "lighthouse", "output", "scanner_cache.json"
+)
 
 _ET = ZoneInfo("America/New_York")
 
@@ -143,7 +149,13 @@ def _render_dashboard(index_data: dict, breadth_series: list, error: str | None 
 <body>
   <!-- Header -->
   <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;border-bottom:1px solid #1e293b;padding-bottom:16px">
-    <h2>Market Health Dashboard</h2>
+    <div style="display:flex;align-items:baseline;gap:20px">
+      <h2>Market Health Dashboard</h2>
+      <nav style="display:flex;gap:16px;font-size:13px">
+        <span style="color:#e2e8f0;font-weight:600">Market Health</span>
+        <a href="/scanner" style="color:#64748b;text-decoration:none">Scanner</a>
+      </nav>
+    </div>
     <div style="display:flex;align-items:center;gap:16px">
       <span style="font-size:13px;color:#64748b">Updated {refresh_time}</span>
       <span style="font-size:13px;color:#94a3b8">
@@ -238,3 +250,17 @@ def index():
 @app.route("/refresh", methods=["POST"])
 def refresh():
     return redirect(url_for("index"))
+
+
+@app.route("/scanner")
+def scanner():
+    """Lighthouse small-cap scanner — reads pre-computed cache, never scans live."""
+    filters = {
+        "sector": request.args.get("sector") or None,
+        "theme": request.args.get("theme") or None,
+        "stage2_only": request.args.get("stage2_only") == "1",
+        "new_only": request.args.get("new_only") == "1",
+    }
+    # Drop None/False values so the empty-state shows "clear filters" only when used
+    filters = {k: v for k, v in filters.items() if v}
+    return render_scanner_page(_SCANNER_CACHE, filters=filters or None)

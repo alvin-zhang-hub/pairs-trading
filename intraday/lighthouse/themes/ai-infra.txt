@@ -1,0 +1,10 @@
+# AI infrastructure plays — companies whose growth is tied to the build-out
+# of AI compute, networking, power, and tooling. Edit freely.
+NVDA
+AMD
+TSM
+AVGO
+AAOI
+AEHR
+ACMR
+ADEA

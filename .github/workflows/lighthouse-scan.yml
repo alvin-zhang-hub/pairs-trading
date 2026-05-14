@@ -1,0 +1,81 @@
+name: Daily Lighthouse Scan
+
+# Runs at 23:00 UTC weekdays:
+#   - 6:00 PM EST (winter, US)
+#   - 7:00 PM EDT (summer, US)
+# Both are safely after the 4 PM ET market close.
+# GitHub Actions cron is in UTC; it does NOT shift for DST.
+on:
+  schedule:
+    - cron: '0 23 * * 1-5'
+  workflow_dispatch:  # allow manual triggering from the Actions tab
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write  # needed to push scan results back to main
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          # fetch only the current commit — we don't need history for the scan,
+          # and shallow checkout speeds up the workflow
+          fetch-depth: 1
+          # ensure we can push back
+          persist-credentials: true
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+          cache: 'pip'
+          cache-dependency-path: 'intraday/requirements.txt'
+
+      - name: Install dependencies
+        working-directory: ./intraday
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run scanner
+        working-directory: ./intraday
+        run: |
+          python -m lighthouse.run_scanner --close-of-day --verbose
+        # Don't fail the whole workflow on a partial result — yfinance is flaky
+        # and a partial scan is still useful. Surface non-zero exit anyway so
+        # we see it in the Actions UI.
+        continue-on-error: false
+
+      - name: Show scan summary
+        if: always()
+        working-directory: ./intraday
+        run: |
+          echo "=== scanner_cache.json (first 60 lines) ==="
+          head -60 lighthouse/output/scanner_cache.json || echo "no cache produced"
+          echo ""
+          echo "=== scanner_latest.csv ==="
+          cat lighthouse/output/scanner_latest.csv || echo "no csv produced"
+
+      - name: Commit results back to main
+        if: success()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          # Targeted adds — never `git add -A` on a repo that's also the user's home dir
+          git add intraday/lighthouse/output/scanner_cache.json
+          git add intraday/lighthouse/output/scanner_latest.csv
+          git add intraday/lighthouse/output/scanner_archive/ || true
+          git add intraday/lighthouse/output/universe_*.json || true
+
+          # Nothing to commit? exit clean
+          if git diff --cached --quiet; then
+            echo "No changes to commit (scan produced no new output)."
+            exit 0
+          fi
+
+          git commit -m "scan: lighthouse daily scan $(date -u +'%Y-%m-%d')"
+          git push origin HEAD:main

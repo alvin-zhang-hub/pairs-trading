@@ -1,0 +1,20 @@
+# Semiconductor and semiconductor equipment names. A broader bucket than ai-infra.
+NVDA
+AMD
+INTC
+TSM
+ASML
+AVGO
+QCOM
+AMAT
+LRCX
+KLAC
+ACMR
+AEHR
+AIP
+ACLS
+AOSL
+ALMS
+AMBA
+ASYS
+ATOM
