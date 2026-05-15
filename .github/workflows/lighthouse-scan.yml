@@ -49,6 +49,14 @@ jobs:
         # we see it in the Actions UI.
         continue-on-error: false
 
+      - name: Build static site for GitHub Pages
+        if: success()
+        working-directory: ./intraday
+        run: |
+          python -m lighthouse.build_static_site
+          echo "=== docs/index.html size ==="
+          wc -c ../docs/index.html
+
       - name: Show scan summary
         if: always()
         working-directory: ./intraday
@@ -70,6 +78,7 @@ jobs:
           git add intraday/lighthouse/output/scanner_latest.csv
           git add intraday/lighthouse/output/scanner_archive/ || true
           git add intraday/lighthouse/output/universe_*.json || true
+          git add docs/index.html
 
           # Nothing to commit? exit clean
           if git diff --cached --quiet; then

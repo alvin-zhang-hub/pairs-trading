@@ -259,8 +259,14 @@ def _build_hit_row(r: dict, index: int) -> str:
         f'</div>'
     )
 
+    # Data attributes drive client-side filtering (see <script> in _page_shell).
+    # The themes attribute is a comma-joined string; the JS splits on ','.
+    themes_attr = ",".join(themes)
+
     return f"""
-    <details style="background:{BG_CARD};border-left:{left_border};border-radius:8px;
+    <details class="hit-row" data-ticker="{ticker}" data-sector="{sector}" data-themes="{themes_attr}"
+             data-stage2="{'true' if stage2 else 'false'}" data-new="{'true' if new_today else 'false'}"
+             style="background:{BG_CARD};border-left:{left_border};border-radius:8px;
                     margin-bottom:10px;padding:14px 18px;overflow:hidden">
       <summary style="cursor:pointer;list-style:none;display:grid;
                      grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
@@ -332,41 +338,89 @@ def _page_shell(body_inner: str, timestamp: str, hit_count: int, new_count: int,
 
     stats_bar = (
         f'<div style="display:flex;gap:24px;align-items:baseline;margin-bottom:20px">'
-        f'<div><span style="font-size:32px;font-weight:700;color:{COLOR_TEXT}">{hit_count}</span>'
+        f'<div><span id="hit-count" style="font-size:32px;font-weight:700;color:{COLOR_TEXT}">{hit_count}</span>'
         f'<span style="font-size:13px;color:{COLOR_MUTED};margin-left:8px">hits</span></div>'
-        f'<div><span style="font-size:20px;font-weight:600;color:{COLOR_GREEN}">{new_count}</span>'
+        f'<div><span id="new-count" style="font-size:20px;font-weight:600;color:{COLOR_GREEN}">{new_count}</span>'
         f'<span style="font-size:13px;color:{COLOR_MUTED};margin-left:6px">new today</span></div>'
         f'<div style="margin-left:auto;font-size:12px;color:{COLOR_MUTED}">Last scan: {_format_timestamp(timestamp)}</div>'
         f'</div>'
     )
 
+    # Filters use onchange handlers; no server roundtrip needed. The form action
+    # remains pointing to /scanner so direct URL params (e.g. ?sector=Technology)
+    # still pre-filter the server-side render — useful for shareable links.
     filter_bar = f"""
-    <form method="GET" action="/scanner" style="background:{BG_CARD};padding:14px 18px;border-radius:10px;margin-bottom:20px;
-                                                 display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+    <form method="GET" action="/scanner" id="filter-form"
+          onsubmit="event.preventDefault(); applyFilters();"
+          style="background:{BG_CARD};padding:14px 18px;border-radius:10px;margin-bottom:20px;
+                 display:flex;gap:16px;align-items:center;flex-wrap:wrap">
       <label style="font-size:12px;color:{COLOR_MUTED}">Sector:
-        <select name="sector" style="margin-left:6px;background:{BG_HEADER};color:{COLOR_TEXT};
-                                       border:1px solid #334155;padding:6px 10px;border-radius:6px">
+        <select name="sector" id="filter-sector" onchange="applyFilters()"
+                style="margin-left:6px;background:{BG_HEADER};color:{COLOR_TEXT};
+                       border:1px solid #334155;padding:6px 10px;border-radius:6px">
           <option value="">All</option>
           {sector_options}
         </select>
       </label>
       <label style="font-size:12px;color:{COLOR_MUTED}">Theme:
-        <select name="theme" style="margin-left:6px;background:{BG_HEADER};color:{COLOR_TEXT};
-                                      border:1px solid #334155;padding:6px 10px;border-radius:6px">
+        <select name="theme" id="filter-theme" onchange="applyFilters()"
+                style="margin-left:6px;background:{BG_HEADER};color:{COLOR_TEXT};
+                       border:1px solid #334155;padding:6px 10px;border-radius:6px">
           <option value="">All</option>
           {theme_options}
         </select>
       </label>
       <label style="font-size:12px;color:{COLOR_TEXT};display:flex;align-items:center;gap:6px">
-        <input type="checkbox" name="stage2_only" value="1" {stage2_checked}> Stage 2 only
+        <input type="checkbox" name="stage2_only" id="filter-stage2" value="1" {stage2_checked}
+               onchange="applyFilters()"> Stage 2 only
       </label>
       <label style="font-size:12px;color:{COLOR_TEXT};display:flex;align-items:center;gap:6px">
-        <input type="checkbox" name="new_only" value="1" {new_checked}> New today only
+        <input type="checkbox" name="new_only" id="filter-new" value="1" {new_checked}
+               onchange="applyFilters()"> New today only
       </label>
-      <button type="submit" style="background:{COLOR_BLUE};color:white;border:none;padding:7px 14px;
-                                    border-radius:6px;cursor:pointer;font-size:13px">Apply</button>
-      <a href="/scanner" style="color:{COLOR_MUTED};text-decoration:none;font-size:12px">Reset</a>
+      <a href="#" onclick="resetFilters(); return false;"
+         style="color:{COLOR_MUTED};text-decoration:none;font-size:12px">Reset</a>
     </form>
+    """
+
+    # Client-side filtering: hides/shows rows based on data-* attributes.
+    # Works identically on the local Flask page and the static GH Pages export.
+    filter_js = """
+    <script>
+    function applyFilters() {
+      const sector = document.getElementById('filter-sector').value;
+      const theme = document.getElementById('filter-theme').value;
+      const stage2Only = document.getElementById('filter-stage2').checked;
+      const newOnly = document.getElementById('filter-new').checked;
+      const rows = document.querySelectorAll('details.hit-row');
+      let visible = 0, newVisible = 0;
+      rows.forEach(row => {
+        const rSector = row.dataset.sector || '';
+        const rThemes = (row.dataset.themes || '').split(',').filter(t => t.length > 0);
+        const rStage2 = row.dataset.stage2 === 'true';
+        const rNew = row.dataset.new === 'true';
+        let show = true;
+        if (sector && rSector !== sector) show = false;
+        if (theme && !rThemes.includes(theme)) show = false;
+        if (stage2Only && !rStage2) show = false;
+        if (newOnly && !rNew) show = false;
+        row.style.display = show ? '' : 'none';
+        if (show) {
+          visible++;
+          if (rNew) newVisible++;
+        }
+      });
+      document.getElementById('hit-count').textContent = visible;
+      document.getElementById('new-count').textContent = newVisible;
+    }
+    function resetFilters() {
+      document.getElementById('filter-sector').value = '';
+      document.getElementById('filter-theme').value = '';
+      document.getElementById('filter-stage2').checked = false;
+      document.getElementById('filter-new').checked = false;
+      applyFilters();
+    }
+    </script>
     """
 
     return f"""<!DOCTYPE html>
@@ -391,16 +445,13 @@ def _page_shell(body_inner: str, timestamp: str, hit_count: int, new_count: int,
               border-bottom:1px solid {BG_CARD};padding-bottom:16px">
     <div style="display:flex;align-items:baseline;gap:20px">
       <h2>Lighthouse Scanner</h2>
-      <nav style="display:flex;gap:16px;font-size:13px">
-        <a href="/" style="color:{COLOR_MUTED};text-decoration:none">Market Health</a>
-        <span style="color:{COLOR_TEXT};font-weight:600">Scanner</span>
-      </nav>
     </div>
   </div>
 
   {stats_bar}
   {filter_bar}
   {body_inner}
+  {filter_js}
 </body>
 </html>"""
 
