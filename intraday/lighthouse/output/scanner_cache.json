@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T00:09:51.333778+00:00",
+  "generated_at": "2026-07-07T23:59:01.670561+00:00",
   "results": [
     {
       "ticker": "FDUS",
@@ -15,23 +15,23 @@
       "score_volatility_contraction": 0,
       "score_distance_from_high": 2,
       "score_total": 4,
-      "pct_below_3yr_high": 0.0,
-      "pct_above_30dma": 0.1108100168271236,
+      "pct_below_3yr_high": 0.014553438871913522,
+      "pct_above_30dma": 0.05600600163051578,
       "fund_revenue_growth": 0,
       "fund_margin_expansion": 0,
       "fund_profitability_path": 0,
       "fund_pe_compression": 0,
       "fund_earnings_beat": 0,
       "fund_total": 0,
-      "price": 20.40999984741211,
-      "mcap": 774648576.0,
-      "adv_20d_dollar": 6110140.68903923,
+      "price": 19.450000762939453,
+      "mcap": 738212416.0,
+      "adv_20d_dollar": 9020004.488649368,
       "industry": "Asset Management",
       "sector": "Financial Services",
       "business_summary": "Fidus Investment Corporation is a business development company. It specializing in leveraged buyouts, refinancings, change of ownership transactions, recapitalizations, strategic acquisitions, mezzanine, growth capital, business expansion, lower middle market investments, debt investments, subordinated and second lien loans, senior secured and unitranche debt, preferred equity, warrants,...",
       "combined_score": 4,
       "themes": [],
-      "new_today": true
+      "new_today": false
     }
   ]
 }
