@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div style="display:flex;gap:24px;align-items:baseline;margin-bottom:20px"><div><span id="hit-count" style="font-size:32px;font-weight:700;color:#e2e8f0">0</span><span style="font-size:13px;color:#64748b;margin-left:8px">hits</span></div><div><span id="new-count" style="font-size:20px;font-weight:600;color:#22c55e">0</span><span style="font-size:13px;color:#64748b;margin-left:6px">new today</span></div><div style="margin-left:auto;font-size:12px;color:#64748b">Last scan: Sep 05, 2026 · 12:37 AM UTC</div></div>
+  <div style="display:flex;gap:24px;align-items:baseline;margin-bottom:20px"><div><span id="hit-count" style="font-size:32px;font-weight:700;color:#e2e8f0">24</span><span style="font-size:13px;color:#64748b;margin-left:8px">hits</span></div><div><span id="new-count" style="font-size:20px;font-weight:600;color:#22c55e">24</span><span style="font-size:13px;color:#64748b;margin-left:6px">new today</span></div><div style="margin-left:auto;font-size:12px;color:#64748b">Last scan: Sep 08, 2026 · 12:57 AM UTC</div></div>
   
     <form method="GET" action="/scanner" id="filter-form"
           onsubmit="event.preventDefault(); applyFilters();"
@@ -34,7 +34,7 @@
                 style="margin-left:6px;background:#111827;color:#e2e8f0;
                        border:1px solid #334155;padding:6px 10px;border-radius:6px">
           <option value="">All</option>
-          
+          <option value="Consumer Cyclical">Consumer Cyclical</option><option value="Consumer Defensive">Consumer Defensive</option><option value="Energy">Energy</option><option value="Financial Services">Financial Services</option><option value="Healthcare">Healthcare</option><option value="Industrials">Industrials</option><option value="Real Estate">Real Estate</option><option value="Technology">Technology</option><option value="Utilities">Utilities</option>
         </select>
       </label>
       <label style="font-size:12px;color:#64748b">Theme:
@@ -57,7 +57,727 @@
          style="color:#64748b;text-decoration:none;font-size:12px">Reset</a>
     </form>
     
-  <div style="text-align:center;padding:64px 24px;background:#111827;border-radius:10px"><div style="font-size:48px;color:#64748b">○</div><div style="margin-top:16px;font-size:18px;color:#e2e8f0;font-weight:600">No scan results to show</div><div style="margin-top:8px;color:#64748b;font-size:13px">Run <code style="background:#1e293b;padding:2px 6px;border-radius:4px">python3 -m lighthouse.run_scanner</code> to generate hits.</div></div>
+  
+    <details class="hit-row" data-ticker="BY" data-sector="Financial Services" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">BY</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#facc15">8<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Financial Services</div>
+          <div style="font-size:11px;color:#64748b">Banks - Regional</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$38.85</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$1.76B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-1.1%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+0.3%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $10.0M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:8 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (8/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Byline Bancorp, Inc. operates as the bank holding company for Byline Bank that provides various banking products and services for small and medium sized businesses, commercial real estate and financial sponsors, and consumers in the United States. It offers various retail deposit products, including non-interest-bearing accounts, money market demand accounts, savings accounts, interest-bearing...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="CHEF" data-sector="Consumer Defensive" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">CHEF</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#facc15">8<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Consumer Defensive</div>
+          <div style="font-size:11px;color:#64748b">Food Distribution</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$114.36</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$4.67B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.9%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+3.7%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $78.1M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:8 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (8/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">The Chefs' Warehouse, Inc., together with its subsidiaries, distributes specialty food and center-of-the-plate products in the United States, the Middle East, and Canada. It offers specialty food products, such as artisan charcuterie, specialty cheeses, unique oils and vinegars, truffles, caviar, chocolate, and pastry products and center-of-the-plate products that includes custom cut beef,...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="DK" data-sector="Energy" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">DK</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#facc15">8<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Energy</div>
+          <div style="font-size:11px;color:#64748b">Oil & Gas Refining & Marketing</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$71.86</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$4.40B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.5%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+7.2%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $110.9M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:8 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (8/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Delek US Holdings, Inc. engages in the integrated downstream energy business in the United States. The company operates in two segments Refining and Logistics. The Refining segment processes crude oil and other feedstock for the manufacture of various grades of gasoline, diesel fuel, aviation fuel, asphalt, and other petroleum-based products that are distributed through owned and third-party...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="EDRY" data-sector="Industrials" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">EDRY</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#facc15">8<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Industrials</div>
+          <div style="font-size:11px;color:#64748b">Marine Shipping</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$57.43</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$165M <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+44.6%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $6.8M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:8 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (8/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">EuroDry Ltd., through its subsidiaries, provides ocean-going transportation services worldwide. The company owns and operates drybulk carriers that transport major bulks, such as iron ore, coal, and grains; and minor bulks, including bauxite, phosphate, and fertilizers. As of March 31, 2026, it operated through a fleet of 11 drybulk carriers comprising three Panamax drybulk carriers, two...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="GNK" data-sector="Industrials" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">GNK</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#facc15">8<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Industrials</div>
+          <div style="font-size:11px;color:#64748b">Marine Shipping</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$27.65</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$1.21B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+8.0%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $16.1M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:8 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (8/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Genco Shipping & Trading Limited, together with its subsidiaries, engages in the ocean transportation of drybulk cargoes worldwide. It operates through two segments: major bulk and minor bulk fleet. The company owns and operates dry bulk vessels to transports iron ore, grains, coal, steel products, and other drybulk cargoes. It charters its vessels primarily to trading houses, including...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="GNW" data-sector="Financial Services" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">GNW</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#facc15">8<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Financial Services</div>
+          <div style="font-size:11px;color:#64748b">Insurance - Life</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$10.35</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$3.91B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+4.0%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $27.7M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:8 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (8/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Genworth Financial, Inc., together with its subsidiaries, provides mortgage and long-term care insurance products in the United States. It operates through two segments: Enact and Closed Block. The company offers primary mortgage, and mortgage insurance products, and contract underwriting services. It also provides long-term care insurance products that are intended to protect against the...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="HSHP" data-sector="Industrials" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">HSHP</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#facc15">8<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Industrials</div>
+          <div style="font-size:11px;color:#64748b">Marine Shipping</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$18.35</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$865M <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+14.8%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $5.3M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:8 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (8/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Himalaya Shipping Ltd. provides dry bulk shipping services worldwide. The company serves major commodity trading, commodity and energy transition, and multi-modal transport companies. As of December 31, 2024, it owned and operated through a fleet of 12 Newcastlemax dry bulk vessels, each with capacity in the range of 210,000 dead weight tons. Himalaya Shipping Ltd. was incorporated in 2021 and is...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="HZO" data-sector="Consumer Cyclical" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">HZO</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#facc15">8<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Consumer Cyclical</div>
+          <div style="font-size:11px;color:#64748b">Specialty Retail</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$52.16</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$1.15B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.1%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+12.1%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $55.9M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:8 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (8/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">MarineMax, Inc. operates as a recreational boat and yacht retailer and superyacht services company in the United States. It operates through two segments, Retail Operations and Product Manufacturing. The company sells new and used recreational boats, including pleasure and fishing boats, mega-yachts, yachts, sport cruisers, motor yachts, e-power yachts, pontoon boats, ski boats, jet boats, and...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="BWLP" data-sector="Energy" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">BWLP</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">7<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Energy</div>
+          <div style="font-size:11px;color:#64748b">Oil & Gas Midstream</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$24.86</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$3.77B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+8.4%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $9.7M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:7 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (7/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">BW LPG Limited, an investment holding company, engages in ship owning and chartering activities worldwide. It operates through Shipping and Product Services segments. The company engages in the transportation of liquefied petroleum gas (LPG); provision of integrated LPG delivery services, as well as management services; wholesale and trade of LPG; and investment in commercial enterprises. As of...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="FLNG" data-sector="Energy" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">FLNG</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">7<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Energy</div>
+          <div style="font-size:11px;color:#64748b">Oil & Gas Midstream</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$31.51</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$1.70B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+3.7%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $13.0M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:7 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (7/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">FLEX LNG Ltd., together with its subsidiaries, engages in the seaborne transportation of liquefied natural gas (LNG) worldwide. As of December 31, 2025, its fleet consists of 13 LNG carriers in operation. The company was incorporated in 2006 and is based in Hamilton, Bermuda.</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="GPRK" data-sector="Energy" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">GPRK</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">7<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Energy</div>
+          <div style="font-size:11px;color:#64748b">Oil & Gas E&P</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$11.56</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$750M <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-20.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+17.2%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $7.2M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:7 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (7/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">GeoPark Limited operates as an oil and natural gas exploration and production company in Chile, Colombia, Brazil, Argentina, Ecuador, and other Latin American countries. It engages in the exploration, development, drilling, and production of oil and natural gas reserves. The company was formerly known as GeoPark Holdings Limited and changed its name to GeoPark Limited in May 2009. GeoPark Limited...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="HAFN" data-sector="Industrials" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">HAFN</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">7<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Industrials</div>
+          <div style="font-size:11px;color:#64748b">Marine Shipping</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$9.22</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$4.61B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+16.5%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $10.9M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:7 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (7/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Hafnia Limited., an investment holding company, owns and operates oil product tankers in Bermuda. It operates through Long Range II, Long Range I, Medium Range (MR), and Handy Size segments. The company transports clean and dirty, refined oil products, vegetable oil, and easy chemicals to national and international oil companies, and chemical companies, as well as trading and utility companies....</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="CWT" data-sector="Utilities" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">CWT</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">6<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Utilities</div>
+          <div style="font-size:11px;color:#64748b">Utilities - Regulated Water</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$50.03</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$3.09B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-16.5%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-0.2%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $25.9M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:6 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (6/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">California Water Service Group, through its subsidiaries, provides water utility and other related services in California, Washington, New Mexico, Hawaii, and Texas. It is involved in the production, purchase, storage, treatment, testing, distribution, and sale of water for domestic, industrial, public, and irrigation uses, as well as for fire protection services. The company offers its services...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="ECPG" data-sector="Financial Services" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">ECPG</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">6<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Financial Services</div>
+          <div style="font-size:11px;color:#64748b">Credit Services</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$97.30</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$2.06B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#facc15;font-weight:600">-6.2%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-0.7%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $36.1M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:6 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (6/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Encore Capital Group, Inc., a specialty finance company, provides debt recovery solutions and other related services for consumers across financial assets worldwide. The company purchases portfolios of defaulted consumer receivables at discounts to face value, as well as manages them by working with individuals as they repay their obligations and works toward financial recovery. It is also...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="FET" data-sector="Energy" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">FET</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">6<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Energy</div>
+          <div style="font-size:11px;color:#64748b">Oil & Gas Equipment & Services</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$80.29</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$903M <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#facc15;font-weight:600">-5.9%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+6.6%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $14.9M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:6 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (6/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Forum Energy Technologies, Inc. designs, manufactures, and supplies products serving the oil, natural gas, defense, and renewable energy industries in the United States and internationally. It operates through two segments, Drilling and Completions; and Artificial Lift and Downhole. The Drilling and Completions segment designs, manufactures, and supplies products and solutions to the drilling,...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="FRNM" data-sector="Healthcare" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">FRNM</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">6<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Healthcare</div>
+          <div style="font-size:11px;color:#64748b">Diagnostics & Research</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$16.31</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$1.75B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+27.5%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $13.2M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:6 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (6/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Freenome, Inc. operates as a biotechnology company in the United States. The company offers an early cancer detection platform that integrates multiomics, artificial intelligence, and machine learning to uncover complex biological signals associated with cancer. It develops blood-based tests, including a test for colorectal cancer screening, as well as tests for multi-cancer and multi-disease...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="GEF" data-sector="Consumer Cyclical" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">GEF</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">6<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Consumer Cyclical</div>
+          <div style="font-size:11px;color:#64748b">Packaging & Containers</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$85.00</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$4.83B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-4.1%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-1.5%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $22.1M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:6 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (6/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Greif, Inc., together with its subsidiaries, produces and sells industrial packaging products and services worldwide. It operates in four segments: Customized Polymer Solutions; Durable Metal Solutions; Sustainable Fiber Solutions; and Integrated Solutions. The Customized Polymer Solutions segment produces and sells polymer-based packaging products, such as plastic drums, rigid intermediate bulk...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="CCSI" data-sector="Technology" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">CCSI</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">5<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Technology</div>
+          <div style="font-size:11px;color:#64748b">Software - Infrastructure</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$35.36</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$648M <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-43.2%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-5.3%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $7.5M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:5 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (5/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Consensus Cloud Solutions, Inc., together with its subsidiaries, provides information delivery services with a software-as-a-service platform in the United States, Canada, Ireland, and internationally. The company offers eFax Corporate, a digital cloud fax technology; ECFax for use by public sector customers with extremely high security demands; and eFax Unite, a single platform that allows the...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="DSGR" data-sector="Industrials" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">DSGR</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">5<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Industrials</div>
+          <div style="font-size:11px;color:#64748b">Industrial Distribution</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$34.66</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$1.60B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#facc15;font-weight:600">-14.6%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-0.3%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $7.6M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:5 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (5/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Distribution Solutions Group, Inc., a specialty distribution company, provides value-added distribution solutions to the maintenance, repair and operations (MRO), original equipment manufacturer, and industrial technology markets. It operates through four segments: Lawson, TestEquity, Gexpro Services, and Canada Branch Division. The Lawson segment distributes specialty products and services to...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="GBTG" data-sector="Consumer Cyclical" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">GBTG</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">5<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Consumer Cyclical</div>
+          <div style="font-size:11px;color:#64748b">Travel Services</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$9.48</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$4.95B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-0.0%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+0.3%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $16.4M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:5 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (5/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Global Business Travel Group, Inc. operates as a technology and services company in the United States, the United Kingdom, and internationally. The company offers the Amex GBT marketplace for fares and rates; travel solutions, such as Amex GBT Egencia for businesses needing a configurable digital travel and expense platform; Complete by SAP Concur and Amex GBT, a co-developed travel and expense...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="GFR" data-sector="Energy" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">GFR</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">5<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Energy</div>
+          <div style="font-size:11px;color:#64748b">Oil & Gas E&P</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$6.16</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$906M <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-42.9%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-2.5%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $5.1M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:5 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (5/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Greenfire Resources Ltd., together with its subsidiaries, engages in the exploration, development, and operation of oil and gas properties in the Athabasca oil sands region of Alberta, Canada. The company's principal asset includes the Hangingstone Facilities which consist of the Expansion Asset and the Demo Asset located in south of Fort McMurray, Alberta. Greenfire Resources Ltd. is...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="IHS" data-sector="Real Estate" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">IHS</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">5<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Real Estate</div>
+          <div style="font-size:11px;color:#64748b">Real Estate Services</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$8.47</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$2.87B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-29.9%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+1.8%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $9.8M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:5 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (5/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">IHS Holding Limited, together with its subsidiaries, develops, owns, and operates shared communications infrastructure in Nigeria, Cameroon, Côte d'Ivoire, South Africa, and Zambia. The company offers colocation and lease amendment services, which allows customers to lease space on existing towers alongside current tenants, install additional equipment on a tower, and request for ancillary...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="ETD" data-sector="Consumer Cyclical" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">ETD</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">4<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Consumer Cyclical</div>
+          <div style="font-size:11px;color:#64748b">Furnishings, Fixtures & Appliances</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$22.49</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$567M <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#facc15;font-weight:600">-11.1%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">+10.2%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $13.4M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:4 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (4/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">Ethan Allen Interiors Inc. operates as an interior design company, and manufacturer and retailer of home furnishings in the United States and internationally. The company operates through two segments, Wholesale and Retail. It offers case goods items, such as beds, dressers, armoires, tables, chairs, buffets, entertainment units, home office furniture, and wooden accents; upholstery comprising...</div></div>
+    </details>
+    
+    <details class="hit-row" data-ticker="EPR" data-sector="Real Estate" data-themes=""
+             data-stage2="true" data-new="true"
+             style="background:#1e293b;border-left:4px solid #22c55e;border-radius:8px;
+                    margin-bottom:10px;padding:14px 18px;overflow:hidden">
+      <summary style="cursor:pointer;list-style:none;display:grid;
+                     grid-template-columns:120px 90px 1fr 1fr 200px 70px;gap:16px;align-items:center">
+        <div>
+          <div style="font-size:20px;font-weight:700;color:#e2e8f0;letter-spacing:-0.3px">EPR</div>
+          <div><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(59,130,246,0.2);color:#3b82f6;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">STAGE 2</span><span style="display:inline-block;padding:2px 8px;border-radius:10px;background:rgba(34,197,94,0.2);color:#22c55e;font-size:10px;font-weight:600;letter-spacing:0.3px;white-space:nowrap;margin:0 4px 4px 0">NEW</span></div>
+        </div>
+        <div style="display:flex;gap:6px">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:2px"><span style="font-size:9px;color:#64748b;letter-spacing:0.5px">COMB</span><span style="font-size:18px;font-weight:700;color:#64748b">3<span style="font-size:11px;color:#64748b">/20</span></span></div>
+        </div>
+        <div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">Real Estate</div>
+          <div style="font-size:11px;color:#64748b">REIT - Specialty</div>
+        </div>
+        <div style="display:flex;flex-wrap:wrap;align-content:flex-start"><span style="font-size:11px;color:#64748b">—</span></div>
+        <div style="text-align:right;line-height:1.5">
+          <div style="font-size:16px;color:#e2e8f0;font-weight:600">$59.99</div>
+          <div style="font-size:13px;color:#e2e8f0;font-weight:500">$4.60B <span style="color:#64748b;font-size:10px;font-weight:400">mcap</span></div>
+          <div style="font-size:11px"><span style="color:#22c55e;font-weight:600">-4.6%</span><span style="color:#64748b;margin-left:4px">from 3y high</span></div>
+          <div style="font-size:11px"><span style="color:#ef4444;font-weight:600">-1.2%</span><span style="color:#64748b;margin-left:4px">vs 30D MA</span></div>
+          <div style="font-size:10px;color:#64748b;margin-top:2px">ADV $43.0M</div>
+        </div>
+        <div style="text-align:right;font-size:11px;color:#64748b;letter-spacing:1px">T:3 F:0</div>
+      </summary>
+      <div style="margin-top:4px;padding:12px;background:#111827;border-radius:6px"><div style="display:grid;grid-template-columns:1fr 1fr;gap:24px"><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">TECHNICAL (3/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Trend (MA stack)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Relative strength (SPY)</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volume accumulation</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Volatility contraction</span><span style="font-family:monospace;color:#facc15">█░ 1/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Distance from 52w high</span><span style="font-family:monospace;color:#22c55e">██ 2/2</span></div></div><div><div style="font-size:11px;color:#64748b;letter-spacing:1px;font-weight:600;margin-bottom:8px">FUNDAMENTAL (0/10)</div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Revenue growth Y/Y</span><span style="font-family:monospace;color:#64748b">░░░ 0/3</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Gross margin expansion</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Path to profitability</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Forward PE compression</span><span style="font-family:monospace;color:#64748b">░░ 0/2</span></div><div style="display:flex;justify-content:space-between;align-items:center;font-size:11px;color:#e2e8f0;padding:2px 0"><span style="color:#64748b">Earnings beat</span><span style="font-family:monospace;color:#64748b">░ 0/1</span></div></div></div><div style="margin-top:12px;font-size:12px;color:#e2e8f0;line-height:1.6">EPR Properties is the leading diversified experiential net lease real estate investment trust (REIT), specializing in select enduring experiential properties in the real estate industry. We focus on real estate venues that create value by facilitating out-of-home leisure and recreation experiences where consumers choose to spend their discretionary time and money. We have total assets of...</div></div>
+    </details>
+    
   
     <script>
     function applyFilters() {
