@@ -1,4 +1,37 @@
 {
-  "generated_at": "2026-09-17T01:07:52.620073+00:00",
-  "results": []
+  "generated_at": "2026-09-18T01:08:54.036664+00:00",
+  "results": [
+    {
+      "ticker": "ECAT",
+      "stage2_flag": true,
+      "weekly_close_above_30w_ma": true,
+      "ma_slope_positive": true,
+      "golden_cross": true,
+      "near_52w_high": true,
+      "breakout_volume": true,
+      "score_trend": 0,
+      "score_relative_strength": 1,
+      "score_volume_accumulation": 0,
+      "score_volatility_contraction": 0,
+      "score_distance_from_high": 2,
+      "score_total": 3,
+      "pct_below_3yr_high": 0.06004538549421853,
+      "pct_above_30dma": -0.04173732621850292,
+      "fund_revenue_growth": 0,
+      "fund_margin_expansion": 0,
+      "fund_profitability_path": 0,
+      "fund_pe_compression": 0,
+      "fund_earnings_beat": 0,
+      "fund_total": 0,
+      "price": 14.279999732971191,
+      "mcap": 1420407296.0,
+      "adv_20d_dollar": 8520607.443680763,
+      "industry": "Asset Management",
+      "sector": "Financial Services",
+      "business_summary": "nan",
+      "combined_score": 3,
+      "themes": [],
+      "new_today": true
+    }
+  ]
 }
